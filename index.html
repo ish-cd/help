@@ -1,0 +1,72 @@
+---
+layout: default
+---
+
+<!-- Temporary redirect to basics until we figure out index content. -->
+<script language="javascript">
+  window.location.href = "/the-basics"
+</script>
+
+<div class="grey lighten-2">
+    <div class="row no-margin">
+        <div class="col s12">
+            <h2 class="center-align">drush.io documentation</h2>
+            <div class="divider"></div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="group-article">
+
+        <!--{% for post in paginator.posts %}
+        <div class="row no-margin">
+            <a class="waves-effect" href="{{ post.url | prepend: site.baseurl }}">
+                <div class="col s12">
+                    <div class="list-article">
+                        <h4 class="thin">{{ post.title }}</h4>
+                        <p class="grey-text text-darken-1 light">Published at {{ post.date | date: "%B %-d, %Y" }}.</p>
+                        <article class="grey-text text-darken-2 post-content on-index light">
+                                {{ post.excerpt | strip_html }}. . 
+                        </article>
+                        <br/>
+                    </div>
+                    <div class="divider dashed"></div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}-->
+
+    </div>
+
+    <div class="section">
+
+        {% if paginator.total_pages > 1 %}
+            <ul class="pagination center-align">
+
+                {% if paginator.previous_page %}
+                    <li class="waves-effect blue lighten-2"><a class="white-text" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a></li>
+                {% else %}
+                    <li class="waves-effect disabled blue lighten-2"><a class="white-text" href="#">&laquo; Prev</a></li>
+                {% endif %}
+
+                {% for page in (1..paginator.total_pages) %}
+                    {% if page == paginator.page %}
+                        <li class="waves-effect active blue"><a href="#">{{ page }}</a></li>
+                    {% elsif page == 1 %}
+                        <li class="waves-effect blue lighten-2"><a class="white-text" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a></li>
+                    {% else %}
+                        <li class="waves-effect blue lighten-2"><a class="white-text" href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a></li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if paginator.next_page %}
+                    <li class="waves-effect blue lighten-2"><a class="white-text" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next &raquo;</a></li>
+                {% else %}
+                    <li class="waves-effect disabled blue lighten-2"><a class="white-text" href="#">Next &raquo;</a></li>
+                {% endif %}
+
+            </ul>
+        {% endif %}
+
+    </div>
+</div>

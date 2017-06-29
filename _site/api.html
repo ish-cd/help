@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>API</title>
+    <meta name="description" content="Training guides and documentation for drush.io, the distributed runtime utility shell.
+">
+    <link type="text/css" rel="stylesheet" href="/assets/css/app.css" media="screen,projection">
+    <link type="text/css" rel="stylesheet" href="/assets/css/pygments.css" media="screen,projection">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="canonical" href="http://localhost:4000/api">
+</head>
+
+<body>
+    <header>
+        <div class="navbar-fixed">
+<nav class="white blue-text z-depth-0">
+    <ul id="slide-out" class="side-nav">
+        <li><a href="/">Home</a></li>
+        
+            
+                <li><a href="/api">API</a></li>
+            
+        
+            
+        
+            
+                <li><a href="/getting-started">Getting Started</a></li>
+            
+        
+            
+        
+            
+                <li><a href="/jobs-and-the-runtime">Jobs & the Runtime</a></li>
+            
+        
+            
+                <li><a href="/the-basics">The Basics</a></li>
+            
+        
+    </ul>
+    <div class="container container-large">
+    <a class="brand-logo" href="/"><span class="grey-text text-darken-4"><img src="/assets/img/logo-64.png" alt="drush.io" class="logo" /> drush.io</span></a>
+    <ul class="right hide-on-med-and-down">
+        
+        
+            
+        
+            
+        
+            
+                <li><a href="/the-basics" class="grey-text text-darken-4">The Basics</a></li>
+            
+        
+            
+                <li><a href="/getting-started" class="grey-text text-darken-4">Getting Started</a></li>
+            
+        
+            
+                <li><a href="/jobs-and-the-runtime" class="grey-text text-darken-4">Jobs & the Runtime</a></li>
+            
+        
+            
+                <li><a href="/api" class="grey-text text-darken-4">API</a></li>
+            
+        
+    </ul>
+    <a href="#" data-activates="slide-out" class="button-collapse right grey-text text-darken-4"><i class="material-icons">keyboard_arrow_down</i></a>
+    </div>
+</nav>
+</div>
+
+    </header>
+    <main>
+        <div class="grey lighten-2">
+    <div class="row no-margin">
+        <div class="col s12">
+            <h2 class="center-align">API</h2>
+            <div class="divider"></div>
+        </div>
+    </div>
+</div>
+<!--<div class="container">
+    <div class="section">-->
+        <article class="row no-margin grey-text text-darken-2 post-content">
+            <div class="col s12 no-padding">
+  <ul class="tabs tabs-fixed-width">
+    <li class="tab col s3"><a href="#intro"><i class="material-icons">open_in_browser</i> Intro</a></li>
+    <li class="tab col s3"><a href="#authentication"><i class="material-icons">extension</i> API tokens</a></li>
+    <li class="tab col s3"><a href="#running-jobs"><i class="material-icons">send</i> Running jobs</a></li>
+    <li class="tab col s3"><a href="#job-status"><i class="material-icons">playlist_add_check</i> Job status</a></li>
+    <li class="tab col s3"><a href="#libraries"><i class="material-icons">library_books</i> Libraries</a></li>
+  </ul>
+</div>
+<div class="container">
+  <div id="intro" class="col s12">
+<div>
+
+      <h3 id="introduction">Introduction</h3>
+
+      <p>Centralizing and collaborating on ops jobs is powerful, but you unleash the full potential of drush.io when you embed it into your day-to-day working environments and processes.</p>
+
+      <p>Use the drush.io API to run jobs in the right places at the right time:</p>
+
+      <ul>
+        <li>Integrate with your chatops platform and deploy from your team’s channel,</li>
+        <li>Build a friendly UI for site editors to trigger platform operations,</li>
+        <li>Augment your ticket tracking, VCS, IDE, or code review tools with platform integrations,</li>
+        <li>Trigger terminus commands from quicksilver scripts</li>
+      </ul>
+
+      <p>All via a simple, RESTful JSON API! Start by <a href="#authentication">diving into authentication</a>.</p>
+
+    </div>
+  </div>
+  <div id="authentication" class="col s12">
+<div>
+
+      <h3 id="authentication">Authentication</h3>
+
+      <p>All API requests on drush.io are authenticated using JSON web tokens (JWT) scoped to your account. In order to run any commands, you must generate a token using the drush.io UI.</p>
+
+      <ol>
+        <li>
+          <p>First, log in to drush.io. By default, you’ll be taken to the <code class="highlighter-rouge">Projects</code> tab on your account dashboard.</p>
+        </li>
+        <li>
+          <p>Navigate to the <code class="highlighter-rouge">API Tokens</code> tab and click the <code class="highlighter-rouge">Generate Token</code> button.</p>
+        </li>
+        <li>
+          <p>A dialogue will appear where you must provide a name/description for your token. We recommend you provide some detail about the context in which you’ll use the token, e.g. <code class="highlighter-rouge">chatbot integration</code>.</p>
+        </li>
+        <li>
+          <p>Click the <code class="highlighter-rouge">Generate</code> button. Another dialogue will appear, showing your JWT. This is the only time you’ll ever see this token, so note it and keep it safe.</p>
+        </li>
+      </ol>
+
+      <p>Note that this token grants the same access to the platform as your account and can be used to run jobs for any project you may be a member of. This token is valid until you revoke it.</p>
+
+      <h3 id="authenticating-requests">Authenticating Requests</h3>
+
+      <p>The JWT should be provided in the <code class="highlighter-rouge">Authorization</code> header of every request you make to the platform. Use the <code class="highlighter-rouge">Bearer</code> authorization type, like this:</p>
+
+      <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">POST</span> <span class="nn">/v1/projects/my-project/jobs/my-job/runs</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.drush.io</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer {api.token}</span>
+</code></pre>
+      </div>
+
+      <p>Where <em>{api.token}</em> is the JWT token you generated, without any quotes or brackets.</p>
+
+      <p>Note that all requests to the drush.io API must be made over https. To keep your account safe, be sure to revoke any API tokens that you are no longer using.</p>
+
+      <p>Now that you know how to authenticate requests, <a href="#running-jobs">learn how to run a job</a>!</p>
+
+    </div>
+  </div>
+  <div id="running-jobs" class="col s12">
+<div>
+
+      <h3 id="running-jobs">Running Jobs</h3>
+
+      <p>Triggering a job run is as simple as a single HTTP POST request! All you need to know are identifiers for the project and job and you’re ready to go.</p>
+
+      <p>All API requests should be made against the base URL <code class="highlighter-rouge">https://api.drush.io/v1</code> and should accept <code class="highlighter-rouge">application/json</code> responses.</p>
+
+      <p>Jobs, which are scoped to projects, live at a path like the following:</p>
+
+      <div class="highlighter-rouge"><pre class="highlight"><code>/projects/{project-ish}/jobs/{job-ish}
+</code></pre>
+      </div>
+
+      <ul>
+        <li><strong>{project-ish}</strong> can either be the project machine name (which you supplied when creating the project and is visible on the <code class="highlighter-rouge">Projects</code> tab on your account dashboard) or the project ID (part of the URL of your project dashboard).</li>
+        <li><strong>{job-ish}</strong> likewise can either be the job machine name (which is generated when you save the job) or the job ID.</li>
+      </ul>
+
+      <p>We recommend you use machine names where possible to make your API calls easier to understand at a glance. Keep in mind that project and job machine names are editable, while IDs can’t be changed.</p>
+
+      <h4 id="simple-job-triggers">Simple job triggers</h4>
+
+      <p>Think of triggering a job as the act of creating a job run. In HTTP terms, this would be a <code class="highlighter-rouge">POST</code> request to the <code class="highlighter-rouge">/runs</code> sub-resource, like this:</p>
+
+      <div class="language-sh highlighter-rouge"><pre class="highlight"><code>curl --request POST <span class="se">\</span>
+  --url https://api.drush.io/v1/projects/<span class="o">{</span>project-ish<span class="o">}</span>/jobs/<span class="o">{</span>job-ish<span class="o">}</span>/runs <span class="se">\</span>
+  --header <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  --header <span class="s1">'Authorization: Bearer {api.token}'</span> <span class="se">\</span>
+  --header <span class="s1">'Content-type: application/json'</span>
+</code></pre>
+      </div>
+
+      <p>The API will respond with a JSON payload representing a single job run, containing at least the following:</p>
+
+      <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3abed1d7-68ec-4151-ae87-edcc918315b4"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"queued"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1498714037</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"changed"</span><span class="p">:</span><span class="w"> </span><span class="mi">1498714037</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+      </div>
+
+      <h4 id="passing-variables-as-context">Passing variables as context</h4>
+
+      <p>As highlighted in the <a href="/jobs-and-the-runtime#variables">variables section</a> of the Jobs and the Runtime documentation, variables can be used to make a single job useful in multiple scenarios.</p>
+
+      <p>To run a job using different variable values, pass in the variable values in the POST request body as JSON, like this:</p>
+
+      <div class="language-sh highlighter-rouge"><pre class="highlight"><code>curl --request POST <span class="se">\</span>
+  --url https://api.drush.io/v1/projects/<span class="o">{</span>project-ish<span class="o">}</span>/jobs/<span class="o">{</span>job-ish<span class="o">}</span>/runs <span class="se">\</span>
+  --header <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  --header <span class="s1">'Authorization: Bearer {api.token}'</span> <span class="se">\</span>
+  --header <span class="s1">'Content-type: application/json'</span> <span class="se">\</span>
+  --data <span class="s1">'{"env": {"VAR_NAME": "var-value"}}'</span>
+</code></pre>
+      </div>
+
+      <p>The structure of the request body is a simple object whose keys are variable names and values are variable values, which is itself nested under an <code class="highlighter-rouge">env</code> key. Or, in formatted JSON, something like this:</p>
+
+      <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"env"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"VAR1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"VAR2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value two"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+      </div>
+
+      <p>Creating a job run takes almost no time because it simply <em>queues</em> the job to be run. The actual execution of the job happens asynchronously. If you need to react based on job run status, you must <a href="#job-status">poll for details on the run</a>.</p>
+
+    </div>
+  </div>
+  <div id="job-status" class="col s12">
+<div>
+
+      <h3 id="job-status">Job Status</h3>
+
+      <p>Reading a job run is a simple <code class="highlighter-rouge">GET</code> request.  Recall that the response payload on job run creation resembles the following:</p>
+
+      <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3abed1d7-68ec-4151-ae87-edcc918315b4"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"queued"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1498714037</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"changed"</span><span class="p">:</span><span class="w"> </span><span class="mi">1498714037</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+      </div>
+
+      <p>A job run can be read and re-read at a path like the following:</p>
+
+      <div class="highlighter-rouge"><pre class="highlight"><code>/projects/{project-ish}/jobs/{job-ish}/runs/{run-id}
+</code></pre>
+      </div>
+
+      <p>Where <em>{run-id}</em> is the <code class="highlighter-rouge">id</code> property returned in the response during job run creation. A CURL command to read a job run would look like the following:</p>
+
+      <div class="language-sh highlighter-rouge"><pre class="highlight"><code>curl --request GET <span class="se">\</span>
+  --url https://api.drush.io/v1/projects/<span class="o">{</span>project-ish<span class="o">}</span>/jobs/<span class="o">{</span>job-ish<span class="o">}</span>/runs/3abed1d7-68ec-4151-ae87-edcc918315b4 <span class="se">\</span>
+  --header <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  --header <span class="s1">'Authorization: Bearer {api.token}'</span> <span class="se">\</span>
+  --header <span class="s1">'Content-type: application/json'</span>
+</code></pre>
+      </div>
+
+      <p>As a job’s status moves from <code class="highlighter-rouge">queued</code> to <code class="highlighter-rouge">running</code> to <code class="highlighter-rouge">complete</code> or <code class="highlighter-rouge">error</code>, its properties will reflect those changes: <code class="highlighter-rouge">duration</code>, the number of seconds a job takes to execute; <code class="highlighter-rouge">changed</code>, the last time the status was updated.</p>
+
+      <p>Once a job has completed execution, if the job generated log output, it will be returned on the <code class="highlighter-rouge">log</code> property, like this:</p>
+
+      <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3abed1d7-68ec-4151-ae87-edcc918315b4"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"complete"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"duration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1498714037"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"changed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1498714068"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"log"</span><span class="p">:</span><span class="w"> </span><span class="s2">" [notice] Command: my-corp.test -- drush cc all [Exit: 0]\n\n"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+      </div>
+
+      <p>Use strategies like exponential back-off to efficiently poll on the job run endpoint until it is in either a <code class="highlighter-rouge">complete</code> or <code class="highlighter-rouge">error</code> state.</p>
+
+      <p>Don’t want to code out the whole solution yourself? Build on top of existing <a href="#libraries">drush.io API clients</a>.</p>
+
+    </div>
+  </div>
+  <div id="libraries" class="col s12">
+<div>
+
+      <h3 id="libraries">Libraries</h3>
+
+      <p>Want to get off the ground quickly? Use one of the community supported API clients:</p>
+
+      <ul>
+        <li><a href="https://www.npmjs.com/package/@drush-io/api-client">Official node.js drush.io API client</a></li>
+        <li>TBD, basic hubot integration</li>
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+        </article>
+<!--    </div>
+</div>-->
+
+    </main>
+    <footer class="page-footer no-margin __top grey darken-4">
+          <div class="container container-large">
+    <div class="row">
+      <div class="col l4 s12">
+        <h5 class="white-text">Links</h5>
+        <ul>
+          
+          <li><a class="grey-text text-lighten-3" href="https://github.com/drush-io"><i class="fa fa-github"></i>&nbsp;&nbsp;drush-io</a></li>
+          <li><a class="grey-text text-lighten-3" href="https://twitter.com/drush_io"><i class="fa fa-twitter"></i>&nbsp;&nbsp;@drush_io</a></li>
+          
+          
+        </ul>
+      </div>
+      <div class="col l6 offset-l2 s12 right-align">
+        <h5 class="white-text"><img src="/assets/img/logo-64.png" alt="drush.io" class="logo" /> drush.io</h5>
+        <p class="grey-text text-lighten-4">Training guides and documentation for drush.io, the distributed runtime utility shell.
+</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container center-align">
+      © 2017 drush.io. All Rights Reserved.
+    </div>
+  </div>
+
+    </footer>
+    <script type="text/javascript" src="/assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="/assets/js/materialize.min.js"></script>
+<script type="text/javascript">
+  $('.button-collapse').sideNav();
+  $('nav a:not(".brand-logo"), .tabs a').addClass('waves-effect waves-light');
+  $('.tabs a[href^="#"]').click(function onTabClick() {
+    history.replaceState(undefined, undefined, $(this).attr('href'));
+  });
+  $('article .container a[href^="#"]').click(function onContentTabChange() {
+    var $anchor = $(this);
+    $('html, body').animate({scrollTop: 0}, 400, function onScrollComplete() {
+      $('.tabs').tabs('select_tab', $anchor.attr('href').replace(/\#/, ''));
+    });
+  });
+</script>
+
+</body>
+</html>

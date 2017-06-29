@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>The Basics</title>
+    <meta name="description" content="Training guides and documentation for drush.io, the distributed runtime utility shell.
+">
+    <link type="text/css" rel="stylesheet" href="/assets/css/app.css" media="screen,projection">
+    <link type="text/css" rel="stylesheet" href="/assets/css/pygments.css" media="screen,projection">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="canonical" href="http://localhost:4000/the-basics">
+</head>
+
+<body>
+    <header>
+        <div class="navbar-fixed">
+<nav class="white blue-text z-depth-0">
+    <ul id="slide-out" class="side-nav">
+        <li><a href="/">Home</a></li>
+        
+            
+                <li><a href="/api">API</a></li>
+            
+        
+            
+        
+            
+                <li><a href="/getting-started">Getting Started</a></li>
+            
+        
+            
+        
+            
+                <li><a href="/jobs-and-the-runtime">Jobs & the Runtime</a></li>
+            
+        
+            
+                <li><a href="/the-basics">The Basics</a></li>
+            
+        
+    </ul>
+    <div class="container container-large">
+    <a class="brand-logo" href="/"><span class="grey-text text-darken-4"><img src="/assets/img/logo-64.png" alt="drush.io" class="logo" /> drush.io</span></a>
+    <ul class="right hide-on-med-and-down">
+        
+        
+            
+        
+            
+        
+            
+                <li><a href="/the-basics" class="grey-text text-darken-4">The Basics</a></li>
+            
+        
+            
+                <li><a href="/getting-started" class="grey-text text-darken-4">Getting Started</a></li>
+            
+        
+            
+                <li><a href="/jobs-and-the-runtime" class="grey-text text-darken-4">Jobs & the Runtime</a></li>
+            
+        
+            
+                <li><a href="/api" class="grey-text text-darken-4">API</a></li>
+            
+        
+    </ul>
+    <a href="#" data-activates="slide-out" class="button-collapse right grey-text text-darken-4"><i class="material-icons">keyboard_arrow_down</i></a>
+    </div>
+</nav>
+</div>
+
+    </header>
+    <main>
+        <div class="grey lighten-2">
+    <div class="row no-margin">
+        <div class="col s12">
+            <h2 class="center-align">The Basics</h2>
+            <div class="divider"></div>
+        </div>
+    </div>
+</div>
+<!--<div class="container">
+    <div class="section">-->
+        <article class="row no-margin grey-text text-darken-2 post-content">
+            <div class="col s12 no-padding">
+  <ul class="tabs tabs-fixed-width">
+    <li class="tab col s4"><a href="#overview"><i class="material-icons">layers</i> Platform Overview</a></li>
+    <li class="tab col s4"><a href="#concepts"><i class="material-icons">lightbulb_outline</i> Concepts</a></li>
+    <li class="tab col s4"><a href="#faq"><i class="material-icons">question_answer</i> FAQ</a></li>
+  </ul>
+</div>
+<div class="container">
+  <div id="overview" class="col s12">
+<div>
+
+      <h3 id="platform-overview">Platform Overview</h3>
+      <p><strong>drush.io</strong> is a continuous delivery platform that lets you encapsulate Pantheon workflow operations into self-service jobs. You can run these jobs at the push of a button or an HTTP request.</p>
+
+      <p>Use drush.io to increase collaboration and transparency in your DevOps practices.</p>
+
+      <p>There are three basic components to the drush.io platform:</p>
+      <ul>
+        <li><strong>The user interface</strong>: for writing, collaborating on, and executing jobs,</li>
+        <li><strong>The runtime matrix</strong>: which manages job queueing and execution,</li>
+        <li><strong>The API</strong>: which you can use to run jobs from your own systems.</li>
+      </ul>
+
+      <p>drush.io is complementary to cloud continuous integration services like Circle CI or Travis CI. Use those tools for build and test automation. Use drush.io for all your other continuous delivery operations needs.</p>
+
+    </div>
+  </div>
+  <div id="concepts" class="col s12">
+<div>
+
+      <h3 id="concepts">Concepts</h3>
+
+      <p><strong>Accounts</strong>: When you sign up for drush.io, you’re signing up for an <em>account</em> representing you as an individual. You and only you have access to this account.</p>
+
+      <p><strong>Credentials</strong>: In addition to basic information about who you are, your account also has a <em>credential</em> tied to it; a credential consists of a Pantheon machine token (that you must provide) and an SSH key pair (that we generate for you). These values are encrypted on the platform.</p>
+
+      <p><strong>Projects</strong>: Your account can be a member of one or more <em>projects</em>. Each project consists of a unique library of jobs and collaborators. Think of projects as a way to group jobs around a business or organization.</p>
+
+      <p><strong>Jobs</strong>: On drush.io, a <em>job</em> is a logical operation that may consist of one or more CLI commands, similar to a shell script. Jobs live under projects and can be edited or executed by any project member.</p>
+
+      <p>When you run a job, the job uses <em>your</em> account credential to authenticate with Pantheon. This ensures audit-ability and keeps access control centralized on Pantheon.</p>
+
+      <p><strong>Job Runs</strong>: When you execute a job, you’re creating a <em>job run</em>, which can be in one of several states:</p>
+      <ul>
+        <li><code class="highlighter-rouge">queued</code>: indicating the job execution request has been received, but has not been assigned to a runtime environment,</li>
+        <li><code class="highlighter-rouge">running</code>: indicating the job is in the process of executing,</li>
+        <li><code class="highlighter-rouge">complete</code>: indicating, the job run finished successfully and without error,</li>
+        <li><code class="highlighter-rouge">error</code>: indicating the job run finished, but one or more underlying commands resulted in an error.</li>
+      </ul>
+
+      <p>Once a job run has finished, you can view its log output and the duration of the run.</p>
+
+      <p><strong>Teammates</strong>: Any number of accounts can be linked to a project. All project members can write and execute jobs. Administrators can additionally invite or remove teammates from a project.</p>
+
+      <p><strong>API Tokens</strong>: You can generate an <em>API token</em> to run jobs via the drush.io API. Like credentials, API tokens are tied to <em>your</em> individual account, not a specific project. You can generate as many API tokens for your account as you wish. You may also revoke API tokens at any time.</p>
+
+    </div>
+  </div>
+  <div id="faq" class="col s12">
+<div>
+
+      <h3 id="frequently-asked-questions">Frequently Asked Questions</h3>
+
+      <p><strong>Why are you called drush.io?</strong>
+This service was originally envisaged as a way to run Drupal’s drush command line interface from anywhere. Although you can still run remote drush commands on drush.io, we’ve evolved the platform to serve even more DevOps needs.</p>
+
+      <p>We still like the name though, so we coined a backronym to describe what we do now: __d__istributed __r__untime __u__tility __sh__ell.</p>
+
+    </div>
+  </div>
+</div>
+
+        </article>
+<!--    </div>
+</div>-->
+
+    </main>
+    <footer class="page-footer no-margin __top grey darken-4">
+          <div class="container container-large">
+    <div class="row">
+      <div class="col l4 s12">
+        <h5 class="white-text">Links</h5>
+        <ul>
+          
+          <li><a class="grey-text text-lighten-3" href="https://github.com/drush-io"><i class="fa fa-github"></i>&nbsp;&nbsp;drush-io</a></li>
+          <li><a class="grey-text text-lighten-3" href="https://twitter.com/drush_io"><i class="fa fa-twitter"></i>&nbsp;&nbsp;@drush_io</a></li>
+          
+          
+        </ul>
+      </div>
+      <div class="col l6 offset-l2 s12 right-align">
+        <h5 class="white-text"><img src="/assets/img/logo-64.png" alt="drush.io" class="logo" /> drush.io</h5>
+        <p class="grey-text text-lighten-4">Training guides and documentation for drush.io, the distributed runtime utility shell.
+</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container center-align">
+      © 2017 drush.io. All Rights Reserved.
+    </div>
+  </div>
+
+    </footer>
+    <script type="text/javascript" src="/assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="/assets/js/materialize.min.js"></script>
+<script type="text/javascript">
+  $('.button-collapse').sideNav();
+  $('nav a:not(".brand-logo"), .tabs a').addClass('waves-effect waves-light');
+  $('.tabs a[href^="#"]').click(function onTabClick() {
+    history.replaceState(undefined, undefined, $(this).attr('href'));
+  });
+  $('article .container a[href^="#"]').click(function onContentTabChange() {
+    var $anchor = $(this);
+    $('html, body').animate({scrollTop: 0}, 400, function onScrollComplete() {
+      $('.tabs').tabs('select_tab', $anchor.attr('href').replace(/\#/, ''));
+    });
+  });
+</script>
+
+</body>
+</html>

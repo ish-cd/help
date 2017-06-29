@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>Getting Started</title>
+    <meta name="description" content="Training guides and documentation for drush.io, the distributed runtime utility shell.
+">
+    <link type="text/css" rel="stylesheet" href="/assets/css/app.css" media="screen,projection">
+    <link type="text/css" rel="stylesheet" href="/assets/css/pygments.css" media="screen,projection">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="canonical" href="http://localhost:4000/getting-started">
+</head>
+
+<body>
+    <header>
+        <div class="navbar-fixed">
+<nav class="white blue-text z-depth-0">
+    <ul id="slide-out" class="side-nav">
+        <li><a href="/">Home</a></li>
+        
+            
+                <li><a href="/api">API</a></li>
+            
+        
+            
+        
+            
+                <li><a href="/getting-started">Getting Started</a></li>
+            
+        
+            
+        
+            
+                <li><a href="/jobs-and-the-runtime">Jobs & the Runtime</a></li>
+            
+        
+            
+                <li><a href="/the-basics">The Basics</a></li>
+            
+        
+    </ul>
+    <div class="container container-large">
+    <a class="brand-logo" href="/"><span class="grey-text text-darken-4"><img src="/assets/img/logo-64.png" alt="drush.io" class="logo" /> drush.io</span></a>
+    <ul class="right hide-on-med-and-down">
+        
+        
+            
+        
+            
+        
+            
+                <li><a href="/the-basics" class="grey-text text-darken-4">The Basics</a></li>
+            
+        
+            
+                <li><a href="/getting-started" class="grey-text text-darken-4">Getting Started</a></li>
+            
+        
+            
+                <li><a href="/jobs-and-the-runtime" class="grey-text text-darken-4">Jobs & the Runtime</a></li>
+            
+        
+            
+                <li><a href="/api" class="grey-text text-darken-4">API</a></li>
+            
+        
+    </ul>
+    <a href="#" data-activates="slide-out" class="button-collapse right grey-text text-darken-4"><i class="material-icons">keyboard_arrow_down</i></a>
+    </div>
+</nav>
+</div>
+
+    </header>
+    <main>
+        <div class="grey lighten-2">
+    <div class="row no-margin">
+        <div class="col s12">
+            <h2 class="center-align">Getting Started</h2>
+            <div class="divider"></div>
+        </div>
+    </div>
+</div>
+<!--<div class="container">
+    <div class="section">-->
+        <article class="row no-margin grey-text text-darken-2 post-content">
+            <div class="col s12 no-padding">
+  <ul class="tabs tabs-fixed-width">
+    <li class="tab col s2"><a href="#intro"><i class="material-icons">open_in_browser</i> Intro</a></li>
+    <li class="tab col s2"><a href="#setting-up-credentials"><i class="material-icons">fingerprint</i> Add a Credential</a></li>
+    <li class="tab col s2"><a href="#creating-projects"><i class="material-icons">folder</i> Create a Project</a></li>
+    <li class="tab col s2"><a href="#creating-jobs"><i class="material-icons">work</i> Create a job</a></li>
+    <li class="tab col s2"><a href="#queueing-jobs"><i class="material-icons">queue</i> Queue a job</a></li>
+    <li class="tab col s2"><a href="#inviting-teammates"><i class="material-icons">people</i> Inviting teammates</a></li>
+  </ul>
+</div>
+<div class="container">
+  <div id="intro" class="col s12">
+<div>
+
+      <h3 id="introduction">Introduction</h3>
+
+      <p>This guide is designed to get you started on drush.io. In particular, we’ll cover</p>
+
+      <ul>
+        <li>Account setup and authorization</li>
+        <li>Project and job management,</li>
+        <li>Job execution</li>
+      </ul>
+
+      <p>All you need before you begin is a drush.io account. We’re still in private beta, but you can <a href="https://www.drush.io/#beta">sign up for the beta waitlist here</a>.</p>
+
+    </div>
+  </div>
+  <div id="setting-up-credentials" class="col s12">
+<div>
+
+      <h3 id="setting-up-credentials">Setting Up Credentials</h3>
+
+      <p>In order for drush.io to execute workflow operations on your behalf, you need to provide a valid Pantheon machine token.</p>
+
+      <ol>
+        <li>
+          <p>First, sign in to Pantheon and generate a machine token. If you’ve never done so, <a href="https://pantheon.io/docs/machine-tokens/">find out how</a> on the Pantheon documentation site. When you generate your token, you may wish to include <code class="highlighter-rouge">drush.io</code> in the name so you know what it’s being used for.</p>
+        </li>
+        <li>
+          <p>Copy the Pantheon machine token to your clipboard.</p>
+        </li>
+        <li>
+          <p>Log in to you drush.io account. By default, you land on the <code class="highlighter-rouge">Projects</code> tab of your account dashboard. Navigate to the <code class="highlighter-rouge">Credentials</code> tab.</p>
+        </li>
+        <li>
+          <p>Click the <code class="highlighter-rouge">Add Credential</code> button. A dialog will appear where you can enter a credential name and paste the Pantheon machine token you copied in step 2.</p>
+        </li>
+        <li>
+          <p>Click the <code class="highlighter-rouge">Add Credential</code> button in the dialog.</p>
+        </li>
+        <li>
+          <p>Once added, you’ll see a confirmation dialog, which displays an SSH public key. In the background, drush.io will add the corresponding private key to your Pantheon account. This key pair is used to run <code class="highlighter-rouge">drush</code> and <code class="highlighter-rouge">wp-cli</code> commands invoked in your jobs.</p>
+        </li>
+        <li>
+          <p>You may optionally add this public key to other services (like Github or Bitbucket) for deeper integration into your operations stack.</p>
+        </li>
+      </ol>
+
+      <p>With your credential set up, you’re ready to <a href="#creating-projects">create a project</a>!</p>
+
+    </div>
+  </div>
+  <div id="creating-projects" class="col s12">
+<div>
+
+      <h3 id="creating-projects">Creating Projects</h3>
+
+      <p>Projects are a way to collaborate with your colleagues on a set of jobs specific to your organization.</p>
+
+      <ol>
+        <li>
+          <p>First, navigate to your account dashboard. The <code class="highlighter-rouge">Projects</code> tab should be the default tab you land on.</p>
+        </li>
+        <li>
+          <p>Click the <code class="highlighter-rouge">Create Project</code> button. A dialog will appear where you can enter a project name. You may wish to use your organization’s name for simplicity.</p>
+        </li>
+        <li>
+          <p>As you type your project name, you’ll see a suggested machine name generated for you. This machine name is globally unique across the platform and can be used to identify your project using the drush.io API. You may modify this value if you don’t like the generated value.</p>
+        </li>
+        <li>
+          <p>Click the <code class="highlighter-rouge">Save</code> button in the dialog and your project will be created.</p>
+        </li>
+      </ol>
+
+      <p>With your project set up, you can <a href="#creating-jobs">start writing jobs</a>!</p>
+
+    </div>
+  </div>
+  <div id="creating-jobs" class="col s12">
+<div>
+
+      <h3 id="creating-jobs">Creating Jobs</h3>
+
+      <p>A job is a set of instructions that encapsulate an operation you may want to run repeatedly.</p>
+
+      <p>As an example, imagine a <code class="highlighter-rouge">Refresh test environment</code> job that clones content and files from <code class="highlighter-rouge">live</code> to <code class="highlighter-rouge">test</code>, clears caches, and triggers a short-lived backup.</p>
+
+      <ol>
+        <li>
+          <p>Navigate to the <code class="highlighter-rouge">Projects</code> tab of your account dashboard and click into the project you want this job to live under.</p>
+        </li>
+        <li>
+          <p>By default, you’ll be taken to the <code class="highlighter-rouge">Job Runs</code> tab of your project dashboard. If you’ve never run a job before, the list of runs will be empty.</p>
+        </li>
+        <li>
+          <p>Navigate to the <code class="highlighter-rouge">Jobs</code> tab and click the <code class="highlighter-rouge">Create Job</code> button.</p>
+        </li>
+        <li>
+          <p>A dialog will appear. At the top is a job name field where you can enter a descriptive name. In the example job above, you would enter <code class="highlighter-rouge">Refresh Test Environment</code>.</p>
+        </li>
+        <li>
+          <p>Below the job name field are two sections. On the left is a text area where you will compose your job script. To the right is a preview area that displays job run progress and output when a preview run is triggered.</p>
+        </li>
+        <li>In the text area to the left, enter the commands that make up your job. For the example job above, it might look something like this:
+          <div class="language-sh highlighter-rouge"><pre class="highlight"><code>terminus env:clone-content my-site.live <span class="nb">test</span> --yes
+terminus env:clear-cache my-site.test
+terminus backup:create my-site.test --keep-for<span class="o">=</span>1
+</code></pre>
+          </div>
+          <p>For details on the runtime environment and script syntax, see <a href="#">Jobs and the Runtime</a>.</p>
+        </li>
+        <li>Click the <code class="highlighter-rouge">Save</code> button in the job create dialog to complete the process.</li>
+      </ol>
+
+      <p>Now that you have a job, <a href="#queueing-jobs">you’re ready to run it</a>!</p>
+
+    </div>
+  </div>
+  <div id="queueing-jobs" class="col s12">
+<div>
+
+      <h3 id="queueing-jobs">Queueing Jobs</h3>
+
+      <p>On its own, a job is just a set of instructions. You can put these instructions in motion by creating a job run. There are several ways to queue a job for execution. We’ll cover two mechanisms here.</p>
+
+      <h4 id="via-the-job-edit-dialogue">Via the job edit dialogue</h4>
+      <ol>
+        <li>
+          <p>Navigate to the “Jobs” tab in the project dashboard where your job lives.</p>
+        </li>
+        <li>
+          <p>Click the job you wish to run. This will open a job edit dialogue, similar to the job create dialogue.</p>
+        </li>
+        <li>
+          <p>At the bottom of the dialogue, next to the <code class="highlighter-rouge">Save</code> button is a <code class="highlighter-rouge">Save and Preview</code> button. Click this to queue the job.</p>
+        </li>
+        <li>
+          <p>Once clicked, the preview area in the right-hand side of the dialogue will activate. The preview area will cycle through runtime acquisition and job run phases.</p>
+        </li>
+        <li>
+          <p>Once the job run has completed, the log output from the job will be displayed in the preview area. If any changes to the job need to be made, you can do so in the script area to the left.</p>
+        </li>
+      </ol>
+
+      <h4 id="via-the-job-action-menu">Via the job action menu</h4>
+      <ol>
+        <li>
+          <p>Navigate to the “Jobs” tab in the project dashboard where your job lives.</p>
+        </li>
+        <li>
+          <p>Click the action menu icon to the right of the job you wish to run. In the drop down menu, click <code class="highlighter-rouge">Queue Job</code>.</p>
+        </li>
+        <li>
+          <p>A notice will appear indicating the job was successfully queued to run.</p>
+        </li>
+        <li>
+          <p>Navigate to the <code class="highlighter-rouge">Job Runs</code> tab, where a new job run should appear in a <code class="highlighter-rouge">queued</code> or <code class="highlighter-rouge">running</code> state. Once the job has completed, you can view the job’s log output by clicking the “View Log` item in the action menu to the right of the run.</p>
+        </li>
+      </ol>
+
+      <p>You’ve now successfully create a job and run it on the platform! Time to <a href="#inviting-teammates">invite your teammates</a>.</p>
+
+    </div>
+  </div>
+  <div id="inviting-teammates" class="col s12">
+<div>
+
+      <h3 id="inviting-teammates">Inviting Teammates</h3>
+
+      <p>Creating and running DevOps workflows right in the browser is just the beginning. Imagine what’s possible when you invite the rest of your team!</p>
+
+      <ol>
+        <li>
+          <p>Open up drush.io to the project dashboard for a project that you created or are an administrator of.</p>
+        </li>
+        <li>
+          <p>Navigate to the <code class="highlighter-rouge">Team</code> tab and click the <code class="highlighter-rouge">Invite Teammate</code> button.</p>
+        </li>
+        <li>
+          <p>Enter your colleague’s e-mail address in the invitation dialogue and click <code class="highlighter-rouge">Invite</code>.</p>
+        </li>
+        <li>
+          <p>Your colleague will receive a welcome e-mail, indicating that they’ve been invited to your drush.io project. Let them know to open the e-mail and activate their account.</p>
+        </li>
+        <li>
+          <p>Until they activate their account, they’ll show up in your team as as generic <code class="highlighter-rouge">drush.io user</code>.</p>
+        </li>
+        <li>
+          <p>By default, teammates are added as basic members, but you can grant teammates the administrator role using the action menu to the right of the user on the <code class="highlighter-rouge">Team</code> tab.</p>
+        </li>
+        <li>
+          <p>Be a dear and send them this documentation!</p>
+        </li>
+      </ol>
+
+      <p>Now you’re cookin’ with grease! Time to <a href="/jobs-and-the-runtime">dive deeper into jobs and the runtime</a>.</p>
+
+    </div>
+  </div>
+</div>
+
+        </article>
+<!--    </div>
+</div>-->
+
+    </main>
+    <footer class="page-footer no-margin __top grey darken-4">
+          <div class="container container-large">
+    <div class="row">
+      <div class="col l4 s12">
+        <h5 class="white-text">Links</h5>
+        <ul>
+          
+          <li><a class="grey-text text-lighten-3" href="https://github.com/drush-io"><i class="fa fa-github"></i>&nbsp;&nbsp;drush-io</a></li>
+          <li><a class="grey-text text-lighten-3" href="https://twitter.com/drush_io"><i class="fa fa-twitter"></i>&nbsp;&nbsp;@drush_io</a></li>
+          
+          
+        </ul>
+      </div>
+      <div class="col l6 offset-l2 s12 right-align">
+        <h5 class="white-text"><img src="/assets/img/logo-64.png" alt="drush.io" class="logo" /> drush.io</h5>
+        <p class="grey-text text-lighten-4">Training guides and documentation for drush.io, the distributed runtime utility shell.
+</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container center-align">
+      © 2017 drush.io. All Rights Reserved.
+    </div>
+  </div>
+
+    </footer>
+    <script type="text/javascript" src="/assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="/assets/js/materialize.min.js"></script>
+<script type="text/javascript">
+  $('.button-collapse').sideNav();
+  $('nav a:not(".brand-logo"), .tabs a').addClass('waves-effect waves-light');
+  $('.tabs a[href^="#"]').click(function onTabClick() {
+    history.replaceState(undefined, undefined, $(this).attr('href'));
+  });
+  $('article .container a[href^="#"]').click(function onContentTabChange() {
+    var $anchor = $(this);
+    $('html, body').animate({scrollTop: 0}, 400, function onScrollComplete() {
+      $('.tabs').tabs('select_tab', $anchor.attr('href').replace(/\#/, ''));
+    });
+  });
+</script>
+
+</body>
+</html>
