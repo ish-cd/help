@@ -133,9 +133,9 @@ On its own, a job is just a set of instructions. You can put these instructions 
 
 3. A notice will appear indicating the job was successfully queued to run.
 
-4. Navigate to the `Job Runs` tab, where a new job run should appear in a `queued` or `running` state. Once the job has completed, you can view the job's log output by clicking the "View Log` item in the action menu to the right of the run.
+4. Navigate to the `Job Runs` tab, where a new job run should appear in a `queued` or `running` state. Once the job has completed, you can view the job's log output by clicking the `View Log` item in the action menu to the right of the run.
 
-You've now successfully create a job and run it on the platform! Time to [invite your teammates](#inviting-teammates).
+You've now successfully created a job and run it on the platform! Time to [invite your teammates](#inviting-teammates).
 
 </div>
   </div>
