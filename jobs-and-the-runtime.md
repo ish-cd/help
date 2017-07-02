@@ -35,7 +35,7 @@ The following CLI tools are available and considered supported in the runtime:
 - `git`
 - `mysql`
 
-It's important to note that, while drush.io jobs resemble a shell script, they aren't exactly shell scripts. Stick to the supported job syntax and you'll be golden!
+To get the most out of drush.io, you'll want to make sure you're familiar with [terminus](https://pantheon.io/docs/terminus/), Pantheon's CLI. It's also important to note that, while drush.io jobs resemble a shell script, they aren't exactly shell scripts. Stick to the supported job syntax and you'll be golden!
 
 Speaking of syntax, dive in with [logical operators](#logical-operators).
 
