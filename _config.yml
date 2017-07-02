@@ -30,4 +30,4 @@ sass:
     sass_dir: _sass
     style: compressed
 permalink: "/:title"
-highlighter: pygments
+highlighter: rouge
