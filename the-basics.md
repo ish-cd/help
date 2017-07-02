@@ -26,7 +26,7 @@ There are three basic components to the drush.io platform:
 - __The runtime matrix__: which manages job queueing and execution,
 - __The API__: which you can use to run jobs from your own systems.
 
-drush.io is complementary to cloud continuous integration services like Circle CI or Travis CI. Use those tools for build and test automation. Use drush.io for all your other continuous delivery operations needs.
+drush.io is complementary to cloud continuous integration services like Circle CI or Travis CI. Use those tools to automate your site build and test process. Use drush.io as the glue for all of the continuous delivery and operations processes around the build.
 
 </div>
   </div>
