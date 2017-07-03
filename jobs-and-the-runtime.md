@@ -30,10 +30,11 @@ All commands are run in an initially empty file directory. You can populate the 
 #### Available CLI tools
 The following CLI tools are available and considered supported in the runtime:
 
-- `echo`
 - `terminus`
 - `git`
 - `mysql`
+- `echo`
+- `sleep`
 
 To get the most out of drush.io, you'll want to make sure you're familiar with [terminus](https://pantheon.io/docs/terminus/), Pantheon's CLI. It's also important to note that, while drush.io jobs resemble a shell script, they aren't exactly shell scripts. Stick to the supported job syntax and you'll be golden!
 
