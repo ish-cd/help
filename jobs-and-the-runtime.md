@@ -7,11 +7,12 @@ order: 3
 
 <div class="col s12 no-padding">
   <ul class="tabs tabs-fixed-width">
-    <li class="tab col s3"><a href="#runtime"><i class="material-icons">storage</i> The runtime</a></li>
-    <li class="tab col s3"><a href="#logical-operators"><i class="material-icons">settings</i> Logical operators</a></li>
-    <li class="tab col s3"><a href="#substitution"><i class="material-icons">swap_horiz</i> Command substitution</a></li>
-    <li class="tab col s3"><a href="#variables"><i class="material-icons">attach_money</i> Variables</a></li>
-    <li class="tab col s3"><a href="#io-redirection"><i class="material-icons">call_split</i> I/O redirection</a></li>
+    <li class="tab col s2"><a href="#runtime"><i class="material-icons">storage</i> The runtime</a></li>
+    <li class="tab col s2"><a href="#logical-operators"><i class="material-icons">settings</i> Logical operators</a></li>
+    <li class="tab col s2"><a href="#substitution"><i class="material-icons">swap_horiz</i> Command substitution</a></li>
+    <li class="tab col s2"><a href="#async"><i class="material-icons">sync</i> Async</a></li>
+    <li class="tab col s2"><a href="#variables"><i class="material-icons">attach_money</i> Variables</a></li>
+    <li class="tab col s2"><a href="#io-redirection"><i class="material-icons">call_split</i> I/O redirection</a></li>
   </ul>
 </div>
 <div class="container">
@@ -86,6 +87,33 @@ This example statement uses the output of one command as the basis for a differe
 ```
 
 This would truncate the `sessions` table on the test environment using the MySQL client.
+
+Next, learn about [asynchronous commands](#async).
+
+</div>
+  </div>
+  <div id="async" class="col s12">
+<div markdown="1">
+
+### Asynchronous Commands
+
+Some terminus commands initiate (and then wait for) potentially long-running operations. An example of this is multidev environment creation.
+
+While in most cases, you would want to wait for the operation to complete before proceeding or ending the job, occasionally, you may wish to run a job __asynchronously__, or in the background.
+
+As an example, you might have a _Recreate Integration Environment_ job, like this:
+
+```sh
+terminus env:delete my-corp.integrate --yes
+terminus env:create my-corp.live integrate &
+sleep 10
+```
+
+Here we're _synchronously_ deleting the `integrate` environment, then once complete, _asynchronously_ creating the same environment using the `&` operator.
+
+Note the use of the `sleep` command, which gives terminus time to reach out to Pantheon and initiate multidev creation before the job ends.
+
+Beware, not all terminus commands work this way.
 
 Next, learn about [variables](#variables).
 

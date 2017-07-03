@@ -67,7 +67,7 @@ __API Tokens__: You can generate an _API token_ to run jobs via the drush.io API
 __Why are you called drush.io?__
 This service was originally envisaged as a way to run Drupal's drush command line interface from anywhere. Although you can still run remote drush commands on drush.io, we've evolved the platform to serve even more DevOps needs.
 
-We still like the name though, so we coined a backronym to describe what we do now: __d__istributed __r__untime __u__tility __sh__ell.
+We still like the name though, so we coined a backronym to describe what we do now: <b>d</b>istributed <b>r</b>untime <b>u</b>tility <b>sh</b>ell.
 
 </div>
   </div>

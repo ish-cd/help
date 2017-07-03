@@ -87,11 +87,12 @@
         <article class="row no-margin grey-text text-darken-2 post-content">
             <div class="col s12 no-padding">
   <ul class="tabs tabs-fixed-width">
-    <li class="tab col s3"><a href="#runtime"><i class="material-icons">storage</i> The runtime</a></li>
-    <li class="tab col s3"><a href="#logical-operators"><i class="material-icons">settings</i> Logical operators</a></li>
-    <li class="tab col s3"><a href="#substitution"><i class="material-icons">swap_horiz</i> Command substitution</a></li>
-    <li class="tab col s3"><a href="#variables"><i class="material-icons">attach_money</i> Variables</a></li>
-    <li class="tab col s3"><a href="#io-redirection"><i class="material-icons">call_split</i> I/O redirection</a></li>
+    <li class="tab col s2"><a href="#runtime"><i class="material-icons">storage</i> The runtime</a></li>
+    <li class="tab col s2"><a href="#logical-operators"><i class="material-icons">settings</i> Logical operators</a></li>
+    <li class="tab col s2"><a href="#substitution"><i class="material-icons">swap_horiz</i> Command substitution</a></li>
+    <li class="tab col s2"><a href="#async"><i class="material-icons">sync</i> Async</a></li>
+    <li class="tab col s2"><a href="#variables"><i class="material-icons">attach_money</i> Variables</a></li>
+    <li class="tab col s2"><a href="#io-redirection"><i class="material-icons">call_split</i> I/O redirection</a></li>
   </ul>
 </div>
 <div class="container">
@@ -111,10 +112,11 @@
       <p>The following CLI tools are available and considered supported in the runtime:</p>
 
       <ul>
-        <li><code class="highlighter-rouge">echo</code></li>
         <li><code class="highlighter-rouge">terminus</code></li>
         <li><code class="highlighter-rouge">git</code></li>
         <li><code class="highlighter-rouge">mysql</code></li>
+        <li><code class="highlighter-rouge">echo</code></li>
+        <li><code class="highlighter-rouge">sleep</code></li>
       </ul>
 
       <p>To get the most out of drush.io, you’ll want to make sure you’re familiar with <a href="https://pantheon.io/docs/terminus/">terminus</a>, Pantheon’s CLI. It’s also important to note that, while drush.io jobs resemble a shell script, they aren’t exactly shell scripts. Stick to the supported job syntax and you’ll be golden!</p>
@@ -169,6 +171,33 @@
       </div>
 
       <p>This would truncate the <code class="highlighter-rouge">sessions</code> table on the test environment using the MySQL client.</p>
+
+      <p>Next, learn about <a href="#async">asynchronous commands</a>.</p>
+
+    </div>
+  </div>
+  <div id="async" class="col s12">
+<div>
+
+      <h3 id="asynchronous-commands">Asynchronous Commands</h3>
+
+      <p>Some terminus commands initiate (and then wait for) potentially long-running operations. An example of this is multidev environment creation.</p>
+
+      <p>While in most cases, you would want to wait for the operation to complete before proceeding or ending the job, occasionally, you may wish to run a job <strong>asynchronously</strong>, or in the background.</p>
+
+      <p>As an example, you might have a <em>Recreate Integration Environment</em> job, like this:</p>
+
+      <div class="language-sh highlighter-rouge"><pre class="highlight"><code>terminus env:delete my-corp.integrate --yes
+terminus env:create my-corp.live integrate &amp;
+sleep 10
+</code></pre>
+      </div>
+
+      <p>Here we’re <em>synchronously</em> deleting the <code class="highlighter-rouge">integrate</code> environment, then once complete, <em>asynchronously</em> creating the same environment using the <code class="highlighter-rouge">&amp;</code> operator.</p>
+
+      <p>Note the use of the <code class="highlighter-rouge">sleep</code> command, which gives terminus time to reach out to Pantheon and initiate multidev creation before the job ends.</p>
+
+      <p>Beware, not all terminus commands work this way.</p>
 
       <p>Next, learn about <a href="#variables">variables</a>.</p>
 
