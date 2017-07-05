@@ -206,7 +206,7 @@ Don't want to code out the whole solution yourself? Build on top of existing [dr
 Want to get off the ground quickly? Use one of the community supported API clients:
 
 - [Official node.js drush.io API client](https://www.npmjs.com/package/@drush-io/api-client)
-- TBD, basic hubot integration
+- [Official drush.io Hubot script](https://www.npmjs.com/package/@drush-io/hubot-drush-io)
 
 </div>
   </div>
