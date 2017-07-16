@@ -36,21 +36,23 @@ All you need before you begin is a drush.io account. We're still in private beta
 
 ### Setting Up Credentials
 
-In order for drush.io to execute workflow operations on your behalf, you need to provide a valid Pantheon machine token.
+In order for drush.io to execute workflow operations on your behalf, you need to provide a valid [Pantheon machine token](https://pantheon.io/docs/machine-tokens/).
 
-1. First, sign in to Pantheon and generate a machine token. If you've never done so, [find out how](https://pantheon.io/docs/machine-tokens/) on the Pantheon documentation site. When you generate your token, you may wish to include `drush.io` in the name so you know what it's being used for.
+1. First, log in to you drush.io account. By default, you land on the `Projects` tab of your account dashboard. Navigate to the `Credentials` tab.
 
-2. Copy the Pantheon machine token to your clipboard.
+2. Click the `Add Credential` button. A dialog will appear where you can enter a credential name like `Work Pantheon Account`
+ 
+3. Click the `Create Machine Token and Paste Here` button. This will open a small window on the Pantheon machine token generation page (you may be prompted to log in to Pantheon).
 
-3. Log in to you drush.io account. By default, you land on the `Projects` tab of your account dashboard. Navigate to the `Credentials` tab.
+4. In the Pantheon dashboard pop-up, click the `Generate Token` button. Once generated, copy the machine token to your clipboard.
 
-4. Click the `Add Credential` button. A dialog will appear where you can enter a credential name and paste the Pantheon machine token you copied in step 2.
+5. Close the pop-up window and paste the contents of your clipboard into the `Pantheon Machine Token` field in the dialogue.
 
-5. Click the `Add Credential` button in the dialog.
+6. Click the `Add Credential` button in the dialog.
 
-6. Once added, you'll see a confirmation dialog, which displays an SSH public key. In the background, drush.io will add the corresponding private key to your Pantheon account. This key pair is used to run `drush` and `wp-cli` commands invoked in your jobs.
+7. Once added, you'll see a confirmation dialog, which displays an SSH public key. In the background, drush.io will add the corresponding private key to your Pantheon account. This key pair is used to run `drush` and `wp-cli` commands invoked in your jobs.
 
-7. You may optionally add this public key to other services (like Github or Bitbucket) for deeper integration into your operations stack.
+8. You may optionally add this public key to other services (like Github or Bitbucket) for deeper integration into your operations stack.
 
 With your credential set up, you're ready to [create a project](#creating-projects)!
 

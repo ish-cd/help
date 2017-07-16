@@ -126,20 +126,23 @@
 
       <h3 id="setting-up-credentials">Setting Up Credentials</h3>
 
-      <p>In order for drush.io to execute workflow operations on your behalf, you need to provide a valid Pantheon machine token.</p>
+      <p>In order for drush.io to execute workflow operations on your behalf, you need to provide a valid <a href="https://pantheon.io/docs/machine-tokens/">Pantheon machine token</a>.</p>
 
       <ol>
         <li>
-          <p>First, sign in to Pantheon and generate a machine token. If you’ve never done so, <a href="https://pantheon.io/docs/machine-tokens/">find out how</a> on the Pantheon documentation site. When you generate your token, you may wish to include <code class="highlighter-rouge">drush.io</code> in the name so you know what it’s being used for.</p>
+          <p>First, log in to you drush.io account. By default, you land on the <code class="highlighter-rouge">Projects</code> tab of your account dashboard. Navigate to the <code class="highlighter-rouge">Credentials</code> tab.</p>
         </li>
         <li>
-          <p>Copy the Pantheon machine token to your clipboard.</p>
+          <p>Click the <code class="highlighter-rouge">Add Credential</code> button. A dialog will appear where you can enter a credential name like <code class="highlighter-rouge">Work Pantheon Account</code></p>
         </li>
         <li>
-          <p>Log in to you drush.io account. By default, you land on the <code class="highlighter-rouge">Projects</code> tab of your account dashboard. Navigate to the <code class="highlighter-rouge">Credentials</code> tab.</p>
+          <p>Click the <code class="highlighter-rouge">Create Machine Token and Paste Here</code> button. This will open a small window on the Pantheon machine token generation page (you may be prompted to log in to Pantheon).</p>
         </li>
         <li>
-          <p>Click the <code class="highlighter-rouge">Add Credential</code> button. A dialog will appear where you can enter a credential name and paste the Pantheon machine token you copied in step 2.</p>
+          <p>In the Pantheon dashboard pop-up, click the <code class="highlighter-rouge">Generate Token</code> button. Once generated, copy the machine token to your clipboard.</p>
+        </li>
+        <li>
+          <p>Close the pop-up window and paste the contents of your clipboard into the <code class="highlighter-rouge">Pantheon Machine Token</code> field in the dialogue.</p>
         </li>
         <li>
           <p>Click the <code class="highlighter-rouge">Add Credential</code> button in the dialog.</p>
