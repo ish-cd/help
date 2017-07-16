@@ -164,7 +164,7 @@ Sometimes, you don't want the output of a command to be displayed. In such cases
 A common use-case for this is running set-up commands, but returning a clean, API response:
 
 ```sh
-terminus env:create ${TSITE}.test $TENV --yes > /dev/null && \
+terminus env:create ${TSITE}.test $TENV --yes > /dev/null 2>&1 && \
   terminus env:info ${TSITE}.$TENV --format=json
 ```
 
