@@ -142,7 +142,7 @@ module.exports = (robot) ->
   drushIoProject = 'MY-CORP'
 
   # Hubot, delete (site) multidev (env)
-  robot.hear /delete [a-z0-9\-]{2,48} multidev ([a-z0-9\-]{2,12})/i, (msg) ->
+  robot.hear /delete ([a-z0-9\-]{2,48}) multidev ([a-z0-9\-]{2,12})/i, (msg) ->
     jobPayload =
       TSITE: msg.match[1]
       TENV: msg.match[2]
