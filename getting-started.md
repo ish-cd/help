@@ -117,7 +117,7 @@ Now that you have a job, [you're ready to run it](#queueing-jobs)!
 
 On its own, a job is just a set of instructions. You can put these instructions in motion by creating a job run. There are several ways to queue a job for execution. We'll cover two mechanisms here.
 
-#### Via the job edit dialogue
+#### __Via the job edit dialogue__
 1. Navigate to the "Jobs" tab in the project dashboard where your job lives.
 
 2. Click the job you wish to run. This will open a job edit dialogue, similar to the job create dialogue.
@@ -128,7 +128,7 @@ On its own, a job is just a set of instructions. You can put these instructions 
 
 5. Once the job run has completed, the log output from the job will be displayed in the preview area. If any changes to the job need to be made, you can do so in the script area to the left.
 
-#### Via the job action menu
+#### __Via the job action menu__
 1. Navigate to the "Jobs" tab in the project dashboard where your job lives.
 
 2. Click the action menu icon to the right of the job you wish to run. In the drop down menu, click `Queue Job`.

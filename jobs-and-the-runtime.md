@@ -23,12 +23,12 @@ order: 4
 
 Every job run on drush.io is executed in an isolated container, offering a clean runtime environment for every run. No state persists between runs, ensuring predictable behavior.
 
-#### The environment
+#### __The environment__
 Because job runs are queued by individuals, every job run is invoked in the context of the individual account's [credential](/the-basics#concepts). That means all commands executed during the job run are run with terminus pre-authenticated and with SSH keys appropriate to run remote commands. No need to run `terminus auth:login` in your job!
 
 All commands are run in an initially empty file directory. You can populate the current working directory using a tool like `git`.
 
-#### Available CLI tools
+#### __Available CLI tools__
 The following CLI tools are available and considered supported in the runtime:
 
 - `terminus`

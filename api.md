@@ -90,7 +90,7 @@ Jobs, which are scoped to projects, live at a path like the following:
 
 We recommend you use machine names where possible to make your API calls easier to understand at a glance. Keep in mind that project and job machine names are editable, while IDs can't be changed.
 
-#### Simple job triggers
+#### __Simple job triggers__
 
 Think of triggering a job as the act of creating a job run. In HTTP terms, this would be a `POST` request to the `/runs` sub-resource, like this:
 
@@ -114,7 +114,7 @@ The API will respond with a JSON payload representing a single job run, containi
 }
 ```
 
-#### Passing variables as context
+#### __Passing variables as context__
 
 As highlighted in the [variables section](/jobs-and-the-runtime#variables) of the Jobs and the Runtime documentation, variables can be used to make a single job useful in multiple scenarios.
 
