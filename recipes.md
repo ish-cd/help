@@ -85,11 +85,10 @@ Use this command set to install Terminus plugins in your job at runtime using so
 
 ```sh
 git clone https://github.com/terminus-plugin-project/terminus-site-status-plugin.git \
-  --quiet --branch 1.1.4 --depth 1 \
-  $TERMINUS_PLUGINS_DIR/site-status
+  --branch 1.1.4 --depth 1 $TERMINUS_PLUGINS_DIR/site-status > /dev/null 2>&1
 ```
 
-Where the `--quiet` flag is used to suppress output, the `--branch` flag specifies a specific release tag (`1.1.4`), and `--depth` specifies a shallow clone (of just a single commit) to optimize clone performance.
+Where the `--branch` flag specifies a specific release tag (`1.1.4`), `--depth` specifies a shallow clone (of just a single commit) to optimize clone performance, and `> /dev/null 2>&1` hides all output from the git clone, keeping the log a little cleaner.
 
 Once installed, you can use the Terminus plugin as intended:
 
