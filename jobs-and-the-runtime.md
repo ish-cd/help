@@ -150,6 +150,33 @@ terminus env:delete ${TSITE:-my-corp}.$TENV --yes
 
 Here, you could choose to only provide a `TENV` value in your API call, which would default to deleting the provided environment on the `my-corp` site. Or, you could provide both a `TENV` and a `TSITE` to delete a multidev elsewhere.
 
+#### Setting variables inline
+
+Variables are stateful and can be set and unset as in a shell script. This can help make jobs clearer and easier to digest. For example:
+
+```sh
+URL='https://live-my-corp.pantheonsite.io'
+echo "Reading headers for url $URL"
+curl -I --silent $URL
+```
+
+Variables are can also used to store and re-use a value that takes time to calculate or return: 
+
+```sh
+URL=`terminus env:view my-corp.${TENV:-live}--print`
+echo "Reading headers for url $URL"
+curl -I --silent $URL
+```
+
+Note also that variables may be unset.
+
+```sh
+URL='https://live-my-corp.pantheonsite.io'
+echo $URL
+unset URL
+echo $URL
+```
+
 Next, learn about [I/O redirection](#io-redirection)
 
 </div>
