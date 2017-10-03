@@ -81,14 +81,11 @@ You may even wish to go a step further and run this job on a nightly basis using
 
 For jobs that require advanced conditional logic, parsing of API responses, or other complex customizations, we recommend [writing a Terminus plugin](https://pantheon.io/docs/terminus/plugins/create/) or using [an existing plugin](https://pantheon.io/docs/terminus/plugins/directory/).
 
-Use this command set to install Terminus plugins in your job at runtime using something like the following:
+You can use composer to install Terminus plugins from packagist.
 
 ```sh
-git clone https://github.com/terminus-plugin-project/terminus-site-status-plugin.git \
-  --branch 1.1.4 --depth 1 $TERMINUS_PLUGINS_DIR/site-status > /dev/null 2>&1
+composer create-project -d ~/.terminus/plugins terminus-plugin-project/terminus-site-status-plugin:~1
 ```
-
-Where the `--branch` flag specifies a specific release tag (`1.1.4`), `--depth` specifies a shallow clone (of just a single commit) to optimize clone performance, and `> /dev/null 2>&1` hides all output from the git clone, keeping the log a little cleaner.
 
 Once installed, you can use the Terminus plugin as intended:
 
