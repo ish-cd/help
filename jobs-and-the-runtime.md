@@ -24,18 +24,24 @@ order: 4
 Every job run on drush.io is executed in an isolated container, offering a clean runtime environment for every run. No state persists between runs, ensuring predictable behavior.
 
 #### __The environment__
-Because job runs are queued by individuals, every job run is invoked in the context of the individual account's [credential](/the-basics#concepts). That means all commands executed during the job run are run with terminus pre-authenticated and with SSH keys appropriate to run remote commands. No need to run `terminus auth:login` in your job!
+Because job runs are queued by __individuals__, every job run is invoked in the context of the individual account's [credential](/the-basics#concepts). That means all commands executed during the job run are run with terminus pre-authenticated and with SSH keys appropriate to run remote commands. No need to run `terminus auth:login` in your job!
 
-All commands are run in an initially empty file directory. You can populate the current working directory using a tool like `git`.
+All commands are run in an initially empty file directory. You can populate the current working directory using tools like `git`, `composer`, `npm`, etc.
+
+You can navigate the file directory using shell built-in commands like `cd` and `pwd`.
 
 #### __Available CLI tools__
 The following CLI tools are available and considered supported in the runtime:
 
-- `terminus`
-- `git`
+- `terminus 1.x`
+- `git 2.13`
 - `mysql`
-- `echo`
-- `sleep`
+- `composer 1.x`
+- `php 5.6`
+- `node 6.x`
+- `npm 3.x`
+
+Jobs are run on a recent version of Alpine Linux and all command line tools normally available therein are available to you, including `curl`.
 
 To get the most out of drush.io, you'll want to make sure you're familiar with [terminus](https://pantheon.io/docs/terminus/), Pantheon's CLI. It's also important to note that, while drush.io jobs resemble a shell script, they aren't exactly shell scripts. Stick to the supported job syntax and you'll be golden!
 
