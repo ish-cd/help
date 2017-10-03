@@ -64,6 +64,11 @@ __API Tokens__: You can generate an _API token_ to run jobs via the drush.io API
 
 ### Frequently Asked Questions
 
+#### __Is there a limit to the number of jobs I can run concurrently?__
+Yes. Jobs are dynamically allocated to run against a distributed (but finite) matrix of runtimes. During the beta, each project is allocated 2 concurrent job runs; any additional run requests will be queued and run as soon as an existing run completes.
+
+If you need more concurrent runs, contact us!
+
 #### __Why are you called drush.io?__
 This service was originally envisaged as a way to run Drupal's drush command line interface from anywhere. Although you can still run remote drush commands on drush.io, we've evolved the platform to serve even more DevOps needs.
 
