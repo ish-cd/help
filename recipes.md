@@ -72,6 +72,50 @@ terminus remote:drush YOUR-SITE.test -- \
 
 You may even wish to go a step further and run this job on a nightly basis using a cron service so that your test environment automatically reflects production each morning.
 
+#### __Install and run a task runner__
+Developers commonly use a task runners like `grunt` or `gulp` to compile and optimize front-end code. You can write a job on drush.io to clone from your non-Pantheon git repository, install and run your task runner and tasks, force commit the results, and push the built assets to Pantheon. For example:
+
+```sh
+echo "Cloning site code from GitHub"
+git clone --quiet git@github.com:YOUR-ORG/YOUR-SITE .
+
+echo "Installing gulp and other node modules required in package.json"
+npm install -g gulp-cli
+npm install
+
+echo "Running gulp build task as defined in gulpfile.js"
+gulp build
+
+echo  "Force adding built files and vendor code that is normally gitignore'd"
+git add --force .
+git commit -a -m "Adding built assets."
+
+echo "Force pushing compiled assets to Pantheon master"
+git remote add pantheon ssh://codeserver.dev.UUID@codeserver.dev.UUID.drush.in:2222/~/repository.git
+git push pantheon master --force
+```
+
+#### __Maintain a leaner codebase__
+Another common theme in the PHP world is to build projects using composable dependencies using Composer and Packagist. You can use the same concept as the front-end code above to achieve similar outcomes with back-end vendor code.
+
+```sh
+echo "Cloning site code from GitHub"
+git clone --quiet git@github.com:YOUR-ORG/YOUR-SITE .
+
+echo "Installing vendor requirements"
+composer install --ignore-platform-reqs
+
+echo  "Force adding vendor code"
+git add --force .
+git commit -a -m "Adding vendor dependencies."
+
+echo "Force pushing composed code to Pantheon master"
+git remote add pantheon ssh://codeserver.dev.UUID@codeserver.dev.UUID.drush.in:2222/~/repository.git
+git push pantheon master --force
+```
+
+Mix and match the above to suit your needs!
+
 </div>
   </div>
   <div id="custom-code" class="col s12">
