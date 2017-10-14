@@ -36,6 +36,7 @@ The following CLI tools are available and considered supported in the runtime:
 - `terminus 1.x`
 - `git 2.13`
 - `mysql`
+- `redis-cli 3.x`
 - `composer 1.x`
 - `php 5.6`
 - `node 6.x`
