@@ -206,6 +206,14 @@ This statement would create a multidev environment and, if successful, print a J
 
 By hiding the output of the set-up commands, you can design a JSON API for yourself based on the log output of the job run.
 
+#### Simple Pipes
+
+In addition to stdout/stderr redirection, drush.io supports basic piping. This is commonly used for filtering the output of a command, but you can pass the output of any command to any other command.  For example:
+
+```sh
+terminus site:list --field=name | grep client-name
+```
+
 Now that you know the runtime environment and job syntax, you're ready to build a custom ops platform on [the drush.io API](/api).
 
 </div>
