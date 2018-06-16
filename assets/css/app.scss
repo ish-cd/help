@@ -150,8 +150,9 @@ footer.page-footer {
     a {
       padding-top: 12px;
       color: rgba(255, 255, 255, 0.7);
-      i.material-icons {
+      i.material-icons, i.fab {
         display: block;
+        font-size: 24px;
       }
     }
     a.active, a:hover {

@@ -42,7 +42,7 @@ All API requests on drush.io are authenticated using JSON web tokens (JWT) scope
 
 1. First, log in to drush.io. By default, you'll be taken to the `Projects` tab on your account dashboard.
 
-2. Navigate to the `API Tokens` tab and click the `Generate Token` button.
+2. Navigate to the `Integrations` tab and click the `Generate Token` button.
 
 3. A dialogue will appear where you must provide a name/description for your token. We recommend you provide some detail about the context in which you'll use the token, e.g. `chatbot integration`.
 

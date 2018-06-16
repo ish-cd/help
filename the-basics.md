@@ -53,9 +53,9 @@ __Job Runs__: When you execute a job, you're creating a _job run_, which can be 
 
 Once a job run has finished, you can view its log output and the duration of the run.
 
-__Teammates__: Any number of accounts can be linked to a project. All project members can write and execute jobs. Administrators can additionally invite or remove teammates from a project.
+__Teammates__: Any number of accounts can be linked to a project. All project members can write and execute jobs. Administrators can additionally invite/remove teammates from a project and connect the project with a Slack workspace.
 
-__API Tokens__: You can generate an _API token_ to run jobs via the drush.io API. Like credentials, API tokens are tied to _your_ individual account, not a specific project. You can generate as many API tokens for your account as you wish. You may also revoke API tokens at any time.
+__Integrations__: You can generate an _API token_ to run jobs via the drush.io API. Like credentials, API tokens are tied to _your_ individual account, not a project. You can generate as many API tokens for your account as you wish. You may also revoke API tokens at any time.
 
 </div>
   </div>
