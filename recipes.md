@@ -5,12 +5,15 @@ published: true
 order: 3
 ---
 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/brands.css" integrity="sha384-VGCZwiSnlHXYDojsRqeMn3IVvdzTx5JEuHgqZ3bYLCLUBV8rvihHApoA1Aso2TZA" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/fontawesome.css" integrity="sha384-GVa9GOgVQgOk+TNYXu7S/InPTfSDTtBalSgkgqQ7sCik56N9ztlkoTr2f/T44oKV" crossorigin="anonymous">
 <div class="col s12 no-padding">
   <ul class="tabs tabs-fixed-width">
     <li class="tab col s3"><a href="#intro"><i class="material-icons">open_in_browser</i> Intro</a></li>
     <li class="tab col s3"><a href="#common-job-templates"><i class="material-icons">content_paste</i> Common Job Templates</a></li>
     <li class="tab col s3"><a href="#custom-code"><i class="material-icons">code</i> Custom/Complex Code</a></li>
-    <li class="tab col s3"><a href="#chatops"><i class="material-icons">chat</i> ChatOps</a></li>
+    <li class="tab col s3"><a href="#slack"><i class="fab fa-slack"></i> ChatOps: Slack</a></li>
+    <li class="tab col s3"><a href="#chatops"><i class="material-icons">chat</i> ChatOps: Custom</a></li>
   </ul>
 </div>
 <div class="container">
@@ -25,7 +28,8 @@ Many workflows you may wish to implement are common among Pantheon users or can 
 
 - [Common job templates](#common-job-templates)
 - [Running custom code in the runtime](#custom-code)
-- [Get started with ChatOps](#chatops)
+- [Get started with ChatOps in Slack](#slack)
+- [Integrate with your existing ChatOps platform](#chatops)
 
 </div>
   </div>
@@ -144,10 +148,53 @@ For additional resources, check...
 
 </div>
   </div>
+  <div id="slack" class="col s12">
+<div markdown="1">
+
+### ChatOps: Slack
+
+ChatOps is [a collaboration model](https://www.atlassian.com/blog/software-teams/what-is-chatops-adoption-guide) that puts people, process, tools, and automation into one place. Implemented well, it allows dev teams to work, collaborate, and learn together in an efficient, transparent way.
+
+The de facto tool for workplace collaboration is [Slack](https://www.slack.com) and drush.io integrates natively with Slack!  Use this integration to run your drush.io jobs right from Slack.
+
+#### __Installing the drush.io Slack App__
+
+In order to install the drush.io Slack App, you must be an [administrator of a project](/the-basics#concepts). You can either edit an [existing project](/getting-started#creating-projects) and click the `Connect Slack` button, or click the button below!
+
+<a href="https://slack.com/oauth/authorize?client_id=256249104835.363191912469&scope=commands,chat:write:bot"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>
+
+You'll be taken through an authorization process which will install the drush.io app into your Slack workspace.  Note that each Slack workspace may only be connected with a single drush.io project.
+
+#### __Authorizing your Slack account to use your drush.io account__
+
+Once installed, the drush.io Slack App exposes a new slash command: `/ish`
+
+The first thing you and members of your team will need to do is to each run `/ish connect`. This command will generate an authorization link which will connect your Slack account with your drush.io account when clicked.
+
+Once connected, you will be able to list and run drush.io jobs in your project.
+
+#### __Listing and running jobs__
+
+You can list jobs in your drush.io project by running `/ish jobs` in Slack.
+
+Along with the name of each job, you'll see a `Run this job` button. You can run a job by clicking the button and confirming your action in the dialog.  If your job makes use of variables, you will have a chance to enter values in the confirmation dialog.
+
+Once confirmed, your job run will be queued and a message will be sent in the Slack channel indicating to your teammates that you just triggered a job run.
+
+The result of the run will be sent as a threaded message underneath this notification once the run is complete.
+
+#### __Running jobs directly__
+
+If you know the machine name of the job you wish to run (e.g. `hello-world`), you can directly invoke the job by running `/ish run hello-world` in Slack.
+
+Similar to the flow above, you'll be prompted to confirm your action and optionally fill in any variables that may be used in your job definition.
+
+</div>
+  </div>
   <div id="chatops" class="col s12">
 <div markdown="1">
 
-### ChatOps
+### ChatOps: Custom
 
 ChatOps is [a collaboration model](https://www.atlassian.com/blog/software-teams/what-is-chatops-adoption-guide) that puts people, process, tools, and automation into one place. Implemented well, it allows dev teams to work, collaborate, and learn together in an efficient, transparent way.
 

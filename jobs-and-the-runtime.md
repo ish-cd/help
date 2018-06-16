@@ -167,7 +167,7 @@ echo "Reading headers for url $URL"
 curl -I --silent $URL
 ```
 
-Variables are can also used to store and re-use a value that takes time to calculate or return: 
+Variables can also be used to store and re-use a value that takes time to calculate or return: 
 
 ```sh
 URL=`terminus env:view my-corp.${TENV:-live}--print`
