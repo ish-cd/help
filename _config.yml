@@ -31,3 +31,5 @@ sass:
     style: compressed
 permalink: "/:title"
 highlighter: rouge
+exclude:
+  - 'node_modules'
