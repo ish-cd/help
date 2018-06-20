@@ -205,8 +205,8 @@ Don't want to code out the whole solution yourself? Build on top of existing [Is
 
 Want to get off the ground quickly? Use one of the community supported API clients:
 
-- [Official node.js Ish CD API client](https://www.npmjs.com/package/@drush-io/api-client)
-- [Official Ish CD Hubot script](https://www.npmjs.com/package/@drush-io/hubot-drush-io)
+- [Official node.js Ish CD API client](https://www.npmjs.com/package/@ish-cd/api-client)
+- [Official Ish CD Hubot script](https://www.npmjs.com/package/@ish-cd/hubot-ish-cd)
 
 </div>
   </div>
