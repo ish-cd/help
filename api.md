@@ -20,9 +20,9 @@ order: 5
 
 ### Introduction
 
-Centralizing and collaborating on ops jobs is powerful, but you unleash the full potential of drush.io when you embed it into your day-to-day working environments and processes.
+Centralizing and collaborating on ops jobs is powerful, but you unleash the full potential of Ish CD when you embed it into your day-to-day working environments and processes.
 
-Use the drush.io API to run jobs in the right places at the right time:
+Use the Ish CD API to run jobs in the right places at the right time:
 
 - Integrate with your chatops platform and deploy from your team's channel,
 - Build a friendly UI for site editors to trigger platform operations,
@@ -38,9 +38,9 @@ All via a simple, RESTful JSON API! Start by [diving into authentication](#authe
 
 ### Authentication
 
-All API requests on drush.io are authenticated using JSON web tokens (JWT) scoped to your account. In order to run any commands, you must generate a token using the drush.io UI.
+All API requests on Ish CD are authenticated using JSON web tokens (JWT) scoped to your account. In order to run any commands, you must generate a token using the Ish UI.
 
-1. First, log in to drush.io. By default, you'll be taken to the `Projects` tab on your account dashboard.
+1. First, log in to Ish. By default, you'll be taken to the `Projects` tab on your account dashboard.
 
 2. Navigate to the `Integrations` tab and click the `Generate Token` button.
 
@@ -56,7 +56,7 @@ The JWT should be provided in the `Authorization` header of every request you ma
 
 ```http
 POST /v1/projects/my-project/jobs/my-job/runs HTTP/1.1
-Host: api.drush.io
+Host: api.ish-cd.com
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer {api.token}
@@ -64,7 +64,7 @@ Authorization: Bearer {api.token}
 
 Where _{api.token}_ is the JWT token you generated, without any quotes or brackets.
 
-Note that all requests to the drush.io API must be made over https. To keep your account safe, be sure to revoke any API tokens that you are no longer using.
+Note that all requests to the Ish CD API must be made over https. To keep your account safe, be sure to revoke any API tokens that you are no longer using.
 
 Now that you know how to authenticate requests, [learn how to run a job](#running-jobs)!
 
@@ -77,7 +77,7 @@ Now that you know how to authenticate requests, [learn how to run a job](#runnin
 
 Triggering a job run is as simple as a single HTTP POST request! All you need to know are identifiers for the project and job and you're ready to go.
 
-All API requests should be made against the base URL `https://api.drush.io/v1` and should accept `application/json` responses.
+All API requests should be made against the base URL `https://api.ish-cd.com/v1` and should accept `application/json` responses.
 
 Jobs, which are scoped to projects, live at a path like the following:
 
@@ -96,7 +96,7 @@ Think of triggering a job as the act of creating a job run. In HTTP terms, this 
 
 ```sh
 curl --request POST \
-  --url https://api.drush.io/v1/projects/{project-ish}/jobs/{job-ish}/runs \
+  --url https://api.ish-cd.com/v1/projects/{project-ish}/jobs/{job-ish}/runs \
   --header 'Accept: application/json' \
   --header 'Authorization: Bearer {api.token}' \
   --header 'Content-type: application/json'
@@ -122,7 +122,7 @@ To run a job using different variable values, pass in the variable values in the
 
 ```sh
 curl --request POST \
-  --url https://api.drush.io/v1/projects/{project-ish}/jobs/{job-ish}/runs \
+  --url https://api.ish-cd.com/v1/projects/{project-ish}/jobs/{job-ish}/runs \
   --header 'Accept: application/json' \
   --header 'Authorization: Bearer {api.token}' \
   --header 'Content-type: application/json' \
@@ -171,7 +171,7 @@ Where _{run-id}_ is the `id` property returned in the response during job run cr
 
 ```sh
 curl --request GET \
-  --url https://api.drush.io/v1/projects/{project-ish}/jobs/{job-ish}/runs/3abed1d7-68ec-4151-ae87-edcc918315b4 \
+  --url https://api.ish-cd.com/v1/projects/{project-ish}/jobs/{job-ish}/runs/3abed1d7-68ec-4151-ae87-edcc918315b4 \
   --header 'Accept: application/json' \
   --header 'Authorization: Bearer {api.token}' \
   --header 'Content-type: application/json'
@@ -194,7 +194,7 @@ Once a job has completed execution, if the job generated log output, it will be 
 
 Use strategies like exponential back-off to efficiently poll on the job run endpoint until it is in either a `complete` or `error` state.
 
-Don't want to code out the whole solution yourself? Build on top of existing [drush.io API clients](#libraries).
+Don't want to code out the whole solution yourself? Build on top of existing [Ish CD API clients](#libraries).
 
 </div>
   </div>
@@ -205,8 +205,8 @@ Don't want to code out the whole solution yourself? Build on top of existing [dr
 
 Want to get off the ground quickly? Use one of the community supported API clients:
 
-- [Official node.js drush.io API client](https://www.npmjs.com/package/@drush-io/api-client)
-- [Official drush.io Hubot script](https://www.npmjs.com/package/@drush-io/hubot-drush-io)
+- [Official node.js Ish CD API client](https://www.npmjs.com/package/@drush-io/api-client)
+- [Official Ish CD Hubot script](https://www.npmjs.com/package/@drush-io/hubot-drush-io)
 
 </div>
   </div>

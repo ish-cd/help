@@ -1,11 +1,10 @@
 # Site settings
-title: drush.io - documentation
+title: Ish CD - Documentation
 description: > # this means to ignore newlines until "baseurl:"
-    Training guides and documentation for drush.io, the distributed runtime
-    utility shell.
-url: "https://help.drush.io"
+    Training guides and documentation for Ish - Continuous Delivery
+url: "https://help.ish-cd.com"
 baseurl: "/"
-logo: <img src="/assets/img/logo-64.png" alt="drush.io" class="logo" /> drush.io
+logo: <img src="/assets/img/logo-64.png" alt="Ish - Continuous Delivery" class="logo" /> Ish - Continuous Delivery
 paginate: 5
 paginate_path: "/page:num/"
 owner:
@@ -16,10 +15,10 @@ owner:
         url: "https://fb.me/profile-id-here"
     github:
         show: true
-        username: "drush-io"
+        username: "ish-cd"
     twitter:
         show: true
-        username: "drush_io"
+        username: "ish_cd"
     disqus:
         show: false
         username: "disqus-id-here"

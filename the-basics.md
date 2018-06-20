@@ -17,16 +17,16 @@ order: 1
 <div markdown="1">
 
 ### Platform Overview
-__drush.io__ is a continuous delivery platform that lets you encapsulate Pantheon workflow operations into self-service jobs. You can run these jobs at the push of a button or an HTTP request.
+__Ish CD__ is a continuous delivery platform that lets you encapsulate Pantheon workflow operations into self-service jobs. You can run these jobs at the push of a button or an HTTP request.
 
-Use drush.io to increase collaboration and transparency in your DevOps practices.
+Use Ish CD to increase collaboration and transparency in your DevOps practices.
 
-There are three basic components to the drush.io platform:
+There are three basic components to the Ish CD platform:
 - __The user interface__: for writing, collaborating on, and executing jobs,
 - __The runtime matrix__: which manages job queueing and execution,
 - __The API__: which you can use to run jobs from your own systems.
 
-drush.io is complementary to cloud continuous integration services like Circle CI or Travis CI. Use those tools to automate your site build and test process. Use drush.io as the glue for all of the continuous delivery and operations processes around the build.
+Ish CD is complementary to cloud continuous integration services like Circle CI or Travis CI. Use those tools to automate your site build and test process. Use Ish CD as the glue for all of the continuous delivery and operations processes around the build.
 
 </div>
   </div>
@@ -35,13 +35,13 @@ drush.io is complementary to cloud continuous integration services like Circle C
 
 ### Concepts
 
-__Accounts__: When you sign up for drush.io, you're signing up for an _account_ representing you as an individual. You and only you have access to this account.
+__Accounts__: When you sign up for Ish CD, you're signing up for an _account_ representing you as an individual. You and only you have access to this account.
 
 __Credentials__: In addition to basic information about who you are, your account also has a _credential_ tied to it; a credential consists of a Pantheon machine token (that you must provide) and an SSH key pair (that we generate for you). These values are encrypted on the platform.
 
 __Projects__: Your account can be a member of one or more _projects_. Each project consists of a unique library of jobs and collaborators. Think of projects as a way to group jobs around a business or organization.
 
-__Jobs__: On drush.io, a _job_ is a logical operation that may consist of one or more CLI commands, similar to a shell script. Jobs live under projects and can be edited or executed by any project member.
+__Jobs__: On Ish CD, a _job_ is a logical operation that may consist of one or more CLI commands, similar to a shell script. Jobs live under projects and can be edited or executed by any project member.
 
 When you run a job, the job uses _your_ account credential to authenticate with Pantheon. This ensures audit-ability and keeps access control centralized on Pantheon.
 
@@ -55,7 +55,7 @@ Once a job run has finished, you can view its log output and the duration of the
 
 __Teammates__: Any number of accounts can be linked to a project. All project members can write and execute jobs. Administrators can additionally invite/remove teammates from a project and connect the project with a Slack workspace.
 
-__Integrations__: You can generate an _API token_ to run jobs via the drush.io API. Like credentials, API tokens are tied to _your_ individual account, not a project. You can generate as many API tokens for your account as you wish. You may also revoke API tokens at any time.
+__Integrations__: You can generate an _API token_ to run jobs via the Ish CD API. Like credentials, API tokens are tied to _your_ individual account, not a project. You can generate as many API tokens for your account as you wish. You may also revoke API tokens at any time.
 
 </div>
   </div>
@@ -68,11 +68,6 @@ __Integrations__: You can generate an _API token_ to run jobs via the drush.io A
 Yes. Jobs are dynamically allocated to run against a distributed (but finite) matrix of runtimes. During the beta, each project is allocated 2 concurrent job runs; any additional run requests will be queued and run as soon as an existing run completes.
 
 If you need more concurrent runs, contact us!
-
-#### __Why are you called drush.io?__
-This service was originally envisaged as a way to run Drupal's drush command line interface from anywhere. Although you can still run remote drush commands on drush.io, we've evolved the platform to serve even more DevOps needs.
-
-We still like the name though, so we coined a backronym to describe what we do now: <b>d</b>istributed <b>r</b>untime <b>u</b>tility <b>sh</b>ell.
 
 </div>
   </div>

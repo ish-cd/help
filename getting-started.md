@@ -21,13 +21,13 @@ order: 2
 
 ### Introduction
 
-This guide is designed to get you started on drush.io. In particular, we'll cover 
+This guide is designed to get you started on Ish CD. In particular, we'll cover 
 
 - Account setup and authorization
 - Project and job management,
 - Job execution
 
-All you need before you begin is a drush.io account. We're still in private beta, but you can [sign up for the beta waitlist here](https://www.drush.io/#beta).
+All you need before you begin is an Ish account. We're still in private beta, but you can [sign up for the beta waitlist here](https://www.ish-cd.com/#beta).
 
 </div>
   </div>
@@ -36,9 +36,9 @@ All you need before you begin is a drush.io account. We're still in private beta
 
 ### Setting Up Credentials
 
-In order for drush.io to execute workflow operations on your behalf, you need to provide a valid [Pantheon machine token](https://pantheon.io/docs/machine-tokens/).
+In order for Ish to execute workflow operations on your behalf, you need to provide a valid [Pantheon machine token](https://pantheon.io/docs/machine-tokens/).
 
-1. First, log in to you drush.io account. By default, you land on the `Projects` tab of your account dashboard. Navigate to the `Credentials` tab.
+1. First, log in to you Ish CD account. By default, you land on the `Projects` tab of your account dashboard. Navigate to the `Credentials` tab.
 
 2. Click the `Add Credential` button. A dialog will appear where you can enter a credential name like `Work Pantheon Account`
  
@@ -50,7 +50,7 @@ In order for drush.io to execute workflow operations on your behalf, you need to
 
 6. Click the `Add Credential` button in the dialog.
 
-7. Once added, you'll see a confirmation dialog, which displays an SSH public key. In the background, drush.io will add the corresponding private key to your Pantheon account. This key pair is used to run `drush` and `wp-cli` commands invoked in your jobs.
+7. Once added, you'll see a confirmation dialog, which displays an SSH public key. In the background, Ish CD will add the corresponding private key to your Pantheon account. This key pair is used to run `drush` and `wp-cli` commands invoked in your jobs.
 
 8. You may optionally add this public key to other services (like Github or Bitbucket) for deeper integration into your operations stack.
 
@@ -69,7 +69,7 @@ Projects are a way to collaborate with your colleagues on a set of jobs specific
 
 2. Click the `Create Project` button. A dialog will appear where you can enter a project name. You may wish to use your organization's name for simplicity.
 
-3. As you type your project name, you'll see a suggested machine name generated for you. This machine name is globally unique across the platform and can be used to identify your project using the drush.io API. You may modify this value if you don't like the generated value.
+3. As you type your project name, you'll see a suggested machine name generated for you. This machine name is globally unique across the platform and can be used to identify your project using the Ish CD API. You may modify this value if you don't like the generated value.
 
 4. Click the `Save` button in the dialog and your project will be created.
 
@@ -148,15 +148,15 @@ You've now successfully created a job and run it on the platform! Time to [invit
 
 Creating and running DevOps workflows right in the browser is just the beginning. Imagine what's possible when you invite the rest of your team!
 
-1. Open up drush.io to the project dashboard for a project that you created or are an administrator of.
+1. Open up Ish CD to the project dashboard for a project that you created or are an administrator of.
 
 2. Navigate to the `Team` tab and click the `Invite Teammate` button.
 
 3. Enter your colleague's e-mail address in the invitation dialogue and click `Invite`.
 
-4. Your colleague will receive a welcome e-mail, indicating that they've been invited to your drush.io project. Let them know to open the e-mail and activate their account.
+4. Your colleague will receive a welcome e-mail, indicating that they've been invited to your Ish CD project. Let them know to open the e-mail and activate their account.
 
-5. Until they activate their account, they'll show up in your team as as generic `drush.io user`.
+5. Until they activate their account, they'll show up in your team as as generic `Ish CD user`.
 
 6. By default, teammates are added as basic members, but you can grant teammates the administrator role using the action menu to the right of the user on the `Team` tab.
 

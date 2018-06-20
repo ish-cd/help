@@ -22,7 +22,7 @@ order: 3
 
 ### Introduction
 
-The drush.io runtime enables you to encapsulate jobs that are highly specific to your needs and the ways your team works.
+The Ish CD runtime enables you to encapsulate jobs that are highly specific to your needs and the ways your team works.
 
 Many workflows you may wish to implement are common among Pantheon users or can be accomplished using common strategies. Use these recipes to help you get up to speed more quickly.
 
@@ -52,10 +52,10 @@ git remote add pantheon ssh://codeserver.dev.UUID@codeserver.dev.UUID.drush.in:2
 git push pantheon master
 
 # Deploy to test env
-terminus env:deploy YOUR-SITE.test -y --note="Deployed via drush.io"
+terminus env:deploy YOUR-SITE.test -y --note="Deployed via Ish CD"
 
 # Deploy to live env
-terminus env:deploy YOUR-SITE.live -y --note="Deployed via drush.io"
+terminus env:deploy YOUR-SITE.live -y --note="Deployed via Ish CD"
 ```
 
 #### __Refresh test environment__
@@ -77,7 +77,7 @@ terminus remote:drush YOUR-SITE.test -- \
 You may even wish to go a step further and run this job on a nightly basis using a cron service so that your test environment automatically reflects production each morning.
 
 #### __Install and run a task runner__
-Developers commonly use a task runners like `grunt` or `gulp` to compile and optimize front-end code. You can write a job on drush.io to clone from your non-Pantheon git repository, install and run your task runner and tasks, force commit the results, and push the built assets to Pantheon. For example:
+Developers commonly use a task runners like `grunt` or `gulp` to compile and optimize front-end code. You can write a job on Ish CD to clone from your non-Pantheon git repository, install and run your task runner and tasks, force commit the results, and push the built assets to Pantheon. For example:
 
 ```sh
 echo "Cloning site code from GitHub"
@@ -155,27 +155,27 @@ For additional resources, check...
 
 ChatOps is [a collaboration model](https://www.atlassian.com/blog/software-teams/what-is-chatops-adoption-guide) that puts people, process, tools, and automation into one place. Implemented well, it allows dev teams to work, collaborate, and learn together in an efficient, transparent way.
 
-The de facto tool for workplace collaboration is [Slack](https://www.slack.com) and drush.io integrates natively with Slack!  Use this integration to run your drush.io jobs right from Slack.
+The de facto tool for workplace collaboration is [Slack](https://www.slack.com) and Ish CD integrates natively with Slack!  Use this integration to run your Ish CD jobs right from Slack.
 
-#### __Installing the drush.io Slack App__
+#### __Installing the Ish CD Slack App__
 
-In order to install the drush.io Slack App, you must be an [administrator of a project](/the-basics#concepts). You can either edit an [existing project](/getting-started#creating-projects) and click the `Connect Slack` button, or click the button below!
+In order to install the Ish CD Slack App, you must be an [administrator of a project](/the-basics#concepts). You can either edit an [existing project](/getting-started#creating-projects) and click the `Connect Slack` button, or click the button below!
 
 <a href="https://slack.com/oauth/authorize?client_id=256249104835.363191912469&scope=commands,chat:write:bot"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>
 
-You'll be taken through an authorization process which will install the drush.io app into your Slack workspace.  Note that each Slack workspace may only be connected with a single drush.io project.
+You'll be taken through an authorization process which will install the Ish CD app into your Slack workspace.  Note that each Slack workspace may only be connected with a single Ish CD project.
 
-#### __Authorizing your Slack account to use your drush.io account__
+#### __Authorizing your Slack account to use your Ish CD account__
 
-Once installed, the drush.io Slack App exposes a new slash command: `/ish`
+Once installed, the Ish CD Slack App exposes a new slash command: `/ish`
 
-The first thing you and members of your team will need to do is to each run `/ish connect`. This command will generate an authorization link which will connect your Slack account with your drush.io account when clicked.
+The first thing you and members of your team will need to do is to each run `/ish connect`. This command will generate an authorization link which will connect your Slack account with your Ish CD account when clicked.
 
-Once connected, you will be able to list and run drush.io jobs in your project.
+Once connected, you will be able to list and run Ish CD jobs in your project.
 
 #### __Listing and running jobs__
 
-You can list jobs in your drush.io project by running `/ish jobs` in Slack.
+You can list jobs in your Ish CD project by running `/ish jobs` in Slack.
 
 Along with the name of each job, you'll see a `Run this job` button. You can run a job by clicking the button and confirming your action in the dialog.  If your job makes use of variables, you will have a chance to enter values in the confirmation dialog.
 
@@ -205,20 +205,20 @@ If you don't use Hubot already, check out these guides on getting started with y
 - [Official Hubot documentation](https://hubot.github.com/docs/)
 - [Set up your first Hubot](https://lornajane.net/posts/2015/set-up-your-first-hubot) by LornaJane
 
-#### __drush.io hubot script__
-You can install the [official drush.io hubot script](https://www.npmjs.com/package/@drush-io/hubot-drush-io) to quickly integrate drush.io with your chat bot. Once installed, you can run commands like
+#### __Ish CD hubot script__
+You can install the [official Ish CD hubot script](https://www.npmjs.com/package/@drush-io/hubot-drush-io) to quickly integrate Ish CD with your chat bot. Once installed, you can run commands like
 
-- `hubot drush.io token set [API TOKEN]` in private chat with your bot to authenticate with drush.io
-- `hubot drush.io run [PROJECT] job [JOB]` to trigger a specific job on drush.io
+- `hubot drush.io token set [API TOKEN]` in private chat with your bot to authenticate with Ish CD
+- `hubot drush.io run [PROJECT] job [JOB]` to trigger a specific job on Ish CD
 
-#### __Custom drush.io hubot integration__
-To get the most out of drush.io/hubot integration, you may wish to write your own library of hubot commands, built on top of the hubot drush.io script.
+#### __Custom Ish CD hubot integration__
+To get the most out of Ish CD/hubot integration, you may wish to write your own library of hubot commands, built on top of the hubot Ish CD script.
 
 Here's an example custom hubot script that adds a "delete multidev" command that triggers a job called `delete-multidev` on the `MY-CORP` project, passing two custom variables (Pantheon site and Pantheon environment name) parsed from the command.
 
 ```coffeescript
 # Description:
-#   MY CORP's custom drush.io hubot integration
+#   MY CORP's custom Ish CD hubot integration
 #
 # Dependencies:
 #   "@drush-io/hubot-drush-io": "~1.0.0"
@@ -227,7 +227,7 @@ Here's an example custom hubot script that adds a "delete multidev" command that
 #   hubot delete <site> multidev <multidev>
 
 module.exports = (robot) ->
-  drushIoProject = 'MY-CORP'
+  projectIsh = 'MY-CORP'
 
   # Hubot, delete (site) multidev (env)
   robot.hear /delete ([a-z0-9\-]{2,48}) multidev ([a-z0-9\-]{2,12})/i, (msg) ->
@@ -236,7 +236,7 @@ module.exports = (robot) ->
       TENV: msg.match[2]
 
     msg.send "Beginning multidev delete."
-    robot.drush.io.run(msg, drushIoProject, 'delete-multidev', jobPayload).then (run) ->
+    robot.drush.io.run(msg, projectIsh, 'delete-multidev', jobPayload).then (run) ->
       if (run.data.status == 'complete')
         msg.send "Multidev successfully deleted."
         msg.send run.data.log
@@ -245,7 +245,7 @@ module.exports = (robot) ->
         msg.send run.data.log
 ```
 
-On drush.io, the corresponding `delete-multidev` job might look something like this:
+On Ish CD, the corresponding `delete-multidev` job might look something like this:
 
 ```sh
 terminus env:delete ${TSITE}.${TENV} --delete-branch --yes

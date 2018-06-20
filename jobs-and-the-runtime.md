@@ -21,7 +21,7 @@ order: 4
 
 ### Runtime
 
-Every job run on drush.io is executed in an isolated container, offering a clean runtime environment for every run. No state persists between runs, ensuring predictable behavior.
+Every job run on Ish CD is executed in an isolated container, offering a clean runtime environment for every run. No state persists between runs, ensuring predictable behavior.
 
 #### __The environment__
 Because job runs are queued by __individuals__, every job run is invoked in the context of the individual account's [credential](/the-basics#concepts). That means all commands executed during the job run are run with terminus pre-authenticated and with SSH keys appropriate to run remote commands. No need to run `terminus auth:login` in your job!
@@ -44,7 +44,7 @@ The following CLI tools are available and considered supported in the runtime:
 
 Jobs are run on a recent version of Alpine Linux and all command line tools normally available therein are available to you, including `curl`.
 
-To get the most out of drush.io, you'll want to make sure you're familiar with [terminus](https://pantheon.io/docs/terminus/), Pantheon's CLI. It's also important to note that, while drush.io jobs resemble a shell script, they aren't exactly shell scripts. Stick to the supported job syntax and you'll be golden!
+To get the most out of Ish CD, you'll want to make sure you're familiar with [terminus](https://pantheon.io/docs/terminus/), Pantheon's CLI. It's also important to note that, while Ish CD jobs resemble a shell script, they aren't exactly shell scripts. Stick to the supported job syntax and you'll be golden!
 
 Speaking of syntax, dive in with [logical operators](#logical-operators).
 
@@ -139,7 +139,7 @@ You'll likely want to use variables with __default values__ as you're starting o
 terminus env:clear-cache ${TSITE_ENV:-my-corp.test}
 ```
 
-This allows you to run the job using the drush.io UI (which doesn't provide a way to customize variables at run-time), but enables API users to provide custom values.
+This allows you to run the job using the Ish UI (which doesn't provide a way to customize variables at run-time), but enables API users to provide custom values.
 
 For commands that don't make sense without custom values, you could use __simple variables__ like this:
 
@@ -208,13 +208,13 @@ By hiding the output of the set-up commands, you can design a JSON API for yours
 
 #### Simple Pipes
 
-In addition to stdout/stderr redirection, drush.io supports basic piping. This is commonly used for filtering the output of a command, but you can pass the output of any command to any other command.  For example:
+In addition to stdout/stderr redirection, Ish CD supports basic piping. This is commonly used for filtering the output of a command, but you can pass the output of any command to any other command.  For example:
 
 ```sh
 terminus site:list --field=name | grep client-name
 ```
 
-Now that you know the runtime environment and job syntax, you're ready to build a custom ops platform on [the drush.io API](/api).
+Now that you know the runtime environment and job syntax, you're ready to build a custom ops platform on [the Ish CD API](/api).
 
 </div>
   </div>
