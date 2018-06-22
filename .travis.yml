@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+- '6'
+
+install:
+- npm install
+
+deploy:
+  provider: pages
+  edge:
+    source: iamEAP/dpl
+    branch: patch-1
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  target_branch: master
+  on:
+    branch: edits

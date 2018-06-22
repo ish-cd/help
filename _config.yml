@@ -1,0 +1,34 @@
+# Site settings
+title: Ish CD - Documentation
+description: > # this means to ignore newlines until "baseurl:"
+    Training guides and documentation for Ish - Continuous Delivery
+url: "https://help.ish-cd.com"
+baseurl: "/"
+logo: <img src="/assets/img/logo-64.png" alt="Ish - Continuous Delivery" class="logo" /> Ish - Continuous Delivery
+paginate: 5
+paginate_path: "/page:num/"
+owner:
+    #email: support@drush.io
+    facebook:
+        show: false
+        name: "Ichihara Rifa"
+        url: "https://fb.me/profile-id-here"
+    github:
+        show: true
+        username: "ish-cd"
+    twitter:
+        show: true
+        username: "ish_cd"
+    disqus:
+        show: false
+        username: "disqus-id-here"
+    linkedin:
+        show: false
+        profile: "https://linkedin.com/in/your-profile-id-here"
+sass:
+    sass_dir: _sass
+    style: compressed
+permalink: "/:title"
+highlighter: rouge
+exclude:
+  - 'node_modules'

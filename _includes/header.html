@@ -1,0 +1,24 @@
+<div class="navbar-fixed">
+<nav class="white blue-text z-depth-0">
+    <ul id="slide-out" class="side-nav">
+        <li><a href="/">Home</a></li>
+        {% for page in site.pages %}
+            {% if page.title %}
+                <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    <div class="container container-large">
+    <a class="brand-logo" href="/"><span class="grey-text text-darken-4">{{ site.logo }}</span></a>
+    <ul class="right hide-on-med-and-down">
+        {% assign sorted_pages = site.pages | sort:"order" %}
+        {% for page in sorted_pages %}
+            {% if page.title %}
+                <li><a href="{{ page.url }}" class="grey-text text-darken-4">{{ page.title }}</a></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    <a href="#" data-activates="slide-out" class="button-collapse right grey-text text-darken-4"><i class="material-icons">keyboard_arrow_down</i></a>
+    </div>
+</nav>
+</div>

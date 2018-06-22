@@ -1,0 +1,18 @@
+<script type="text/javascript" src="{{ "/assets/js/jquery.min.js" }}"></script>
+<script type="text/javascript" src="{{ "/assets/js/materialize.min.js" }}"></script>
+<script type="text/javascript">
+  $('.button-collapse').sideNav();
+  $('nav a:not(".brand-logo"), .tabs a').addClass('waves-effect waves-light');
+  $('.tabs a[href^="#"]').click(function onTabClick() {
+    history.replaceState(undefined, undefined, $(this).attr('href'));
+  });
+  $('article .container a[href^="#"]').click(function onContentTabChange() {
+    var $anchor = $(this);
+    $('html, body').animate({scrollTop: 0}, 400, function onScrollComplete() {
+      $('.tabs').tabs('select_tab', $anchor.attr('href').replace(/\#/, ''));
+    });
+  });
+</script>
+<!-- Start of ish Zendesk Widget script -->
+<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=51a49f7b-dab7-4b1e-9b7b-126053ef502e"> </script>
+<!-- End of ish Zendesk Widget script -->
