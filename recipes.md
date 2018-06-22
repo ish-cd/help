@@ -208,8 +208,8 @@ If you don't use Hubot already, check out these guides on getting started with y
 #### __Ish CD hubot script__
 You can install the [official Ish CD hubot script](https://www.npmjs.com/package/@drush-io/hubot-drush-io) to quickly integrate Ish CD with your chat bot. Once installed, you can run commands like
 
-- `hubot drush.io token set [API TOKEN]` in private chat with your bot to authenticate with Ish CD
-- `hubot drush.io run [PROJECT] job [JOB]` to trigger a specific job on Ish CD
+- `hubot ish token set [API TOKEN]` in private chat with your bot to authenticate with Ish CD
+- `hubot ish run [PROJECT] job [JOB]` to trigger a specific job on Ish CD
 
 #### __Custom Ish CD hubot integration__
 To get the most out of Ish CD/hubot integration, you may wish to write your own library of hubot commands, built on top of the hubot Ish CD script.
@@ -236,7 +236,7 @@ module.exports = (robot) ->
       TENV: msg.match[2]
 
     msg.send "Beginning multidev delete."
-    robot.drush.io.run(msg, projectIsh, 'delete-multidev', jobPayload).then (run) ->
+    robot.ish.run(msg, projectIsh, 'delete-multidev', jobPayload).then (run) ->
       if (run.data.status == 'complete')
         msg.send "Multidev successfully deleted."
         msg.send run.data.log
